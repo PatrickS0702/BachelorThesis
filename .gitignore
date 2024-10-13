@@ -1,0 +1,40 @@
+# LaTeX temporary files
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.out
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.run.xml
+
+# BibTeX files
+*.bbl
+*.blg
+*.bcf
+
+# Glossaries
+*.acn
+*.acr
+*.glg
+*.glo
+*.gls
+*.ist
+
+# PDF output (uncomment if you don't want to track the output PDF)
+# *.pdf
+
+# Specific files
+main.pdf
+main.tcp
+main.tps
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor backup files
+*~
+*.bak
