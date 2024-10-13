@@ -113,11 +113,27 @@ Die Verbindungen zwischen den Neuronen haben Gewichte, die während des Training
 
 \subsubsection{Deep Learning}
 \label{subsec:deep-learning}
-Deep learning bezeichnet neuronale Netze die über viele versteckte Schichten verfügen \cite{RebalaGopinath2019AItM}, wodurch hierarchische Merkmale aus den Daten extrahiert werden können. Die Entwicklung von Deep Learning Algorithem führte in den letzten Jahren zu großen Fortschritten im Bereichen wie Bilderkennung, Sprachverarbeitung, Robotik oder auch \gls{OCR}.
+Deep learning bezeichnet neuronale Netze die über viele versteckte Schichten verfügen \cite{RebalaGopinath2019AItM}, wodurch hierarchische Merkmale aus den Daten extrahiert werden können. Die Entwicklung von Deep Learning Algorithem führte in den letzten Jahren zu großen Fortschritten im Bereichen wie Bilderkennung, Sprachverarbeitung, Robotik oder auch \gls{OCR} \cite{jordan2015machine}.
+
+Wichtige Konzepte im Deep Learning sind:
+\begin{itemize}
+	\item Backpropagation: Algorithmus zum effizienten Training durch Berechnung der Gradienten \cite{RebalaGopinath2019AItM}
+	\item Regularisierung: Techniken zur Vermeidung von Overfitting \cite{jordan2015machine}
+	\item Transfer Learning: Übertragung gelernter Merkmale auf neue Aufgaben \cite{jordan2015machine}
+\end{itemize}
+
 
 \subsubsection{Convolutional Neural Networks (CNNs)}
 \label{subsubsec:cnn}
+CNNs sind eine spezielle Art von neuronalen Netzen, die besonders für die Verarbeitung von Bilddaten geeignet sind \cite{RebalaGopinath2019AItM}. Sie nutzen Faltungsoperationen (Convolutions), um lokale Muster in den Eingabedaten zu erkennen. Wichtige Elemente von CNNs sind \cite{RebalaGopinath2019AItM}:
 
+\begin{itemize}
+	\item Convolutional Layer: Anwendung von Filtern zur Merkmalserkennung
+	\item Pooling Layer: Reduzierung der räumlichen Dimensionen
+	\item Fully Connected Layer: Klassifikation basierend auf extrahierten Merkmalen
+\end{itemize}
+
+CNNs haben sich als sehr leistungsfähig für Aufgaben wie Objekterkennung, Gesichtserkennung und autonomes Fahren erwiesen \cite{RebalaGopinath2019AItM}.
 
 \section{Natural Language Processing (NLP)}
 \label{sec:nlp}
