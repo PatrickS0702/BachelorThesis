@@ -1,0 +1,44 @@
+\chapter{Einleitung}
+\label{cha:einleitung}
+
+\section{Motivation und Hintergrund}
+\label{sec:motivation-und-hintergrund}
+
+\subsection{Allgemeine Motivation}
+\label{subsec:allgemeine-motivation}
+
+Die automatisierte Verarbeitung von Dokumenten zur Gewinnung strukturierter Daten hat in den letzten Jahren erheblich an Bedeutung gewonnen. Dies liegt vor allem an der zunehmenden Digitalisierung von Geschäftsprozessen. Dokumentenverarbeitungssysteme ermöglichen eine erhebliche Zeit- und Kosteneinsparung. Die Reduktion des Bedarfs an manueller Dateneingabe reduziert gleichzeitig das Potenzial für menschliche Fehler \cite{PerotVincent2024LLMD}. % ganzer Absatz gemeint
+
+Die Relevanz dieses Themas wird durch die praktische Anwendung in der Industrie unterstrichen. Dies zeigt sich auch darin, dass die Aufgabenstellung für diese Bachelorarbeit von der Firma Multidata, einem Unternehmen mit Expertise in der Entwicklung von Dokumentenverarbeitungssystemen, zur Verfügung gestellt wurde.
+
+\subsection{Ausgangslage}
+\label{subsec:ausgangslage}
+
+Die Firma Multidata bietet momentan ein Zonal-\gls{OCR}-basiertes\ref{subsubsec:zonal-ocr-parser} System zur Umsetzung der genannten Punkte an. Dabei müssen Benutzer*innen zunächst manuell Vorlagen definieren, durch welche später die Verarbeitung von Dokumenten mit dem selben Format erfolgt. Da dieses System einen hohen manuellen Aufwand erfordert, soll es durch ein System mit höherem Automatisierungsgrad ersetzt werden. Auf die Funktionsweise dieses Systems wird im Kapitel \ref{sec:analyse-des-akutell-eingesetzten-systems} genauer eingegangen.
+
+\section{Problemstellung}
+\label{sec:problemstellung}
+
+Die Aufgaben des angestrebten Dokumentenverarbeitungssystems können in zwei Kernaufgaben aufgeteilt werden: Kategorisierung der Dokumente und Datenextraktion.
+
+Um später bestimmen zu können, welche Daten aus einem Dokument extrahiert werden sollen, muss zuerst bekannt sein, um welche Art von Dokument es sich handelt. Diese Kategorisierung soll das System selbstständig erledigen. Dabei wird eine Lösung angestrebt, die die dynamische Konfiguration der verfügbaren Kategorien ermöglicht, um eine einfache Erweiterung um neue Dokumententypen ohne große Systemänderungen oder erneutes Training eines Modells zu ermöglichen.
+
+Anschließend müssen die für die Kategorie vorgesehenen Daten extrahiert werden. Dabei soll die Lösung dem*der Benutzer*in die Möglichkeit bieten, die zu extrahierenden Informationen und deren Datentyp zu definieren. Außerdem müssen die Ergebnisse der Datenextraktion in eine strukturierte Form gebracht werden, um diese anschließend automatisiert weiterverarbeiten zu können.
+
+Da insbesondere im Umgang mit sensiblen Dokumenten der Datenschutz und die Sicherheit sehr wichtig sind, besteht die Notwendigkeit, das Dokumentenverarbeitungssystem lokal und ohne Übermittlung von Daten an externe Dienste zu betreiben \cite{HuangYupan2022LPfD}. Zusätzlich soll das System plattformunabhängig sein und sowohl auf Windows- als auch auf Linux-Betriebssystemen lauffähig sein, um die Deploymentmöglichkeiten für die Kunden der Firma Multidata zu verbessern.
+
+\section{Zielsetzung und Abgrenzung des Themas}
+\label{sec:zielsetzung-und-abgrenzung}
+
+Das Ziel der Arbeit ist es, eine geeignete Methode zur Umsetzung des beschriebenen Dokumentenverarbeitungssystems zu erarbeiten. Dazu sollen verschiedene Ansätze aus wissenschaftlichen Arbeiten verglichen werden. Zusätzlich sollen auch kommerzielle Angebote analysiert und verglichen werden, um ein ausreichend breites Bild des momentanen Stands der Technik zu erhalten.
+
+Es soll erhoben werden, wie zuverlässig die verschiedenen Ansätze sind. Dabei soll sowohl betrachtet werden, ob die benötigten Daten gefunden werden, als auch ob das System falsche Daten erzeugt. Zusätzlich soll auch die Leistung der verschiedenen Ansätze in Bezug auf ihre empirische Laufzeit in die Vergleiche einfließen.
+
+Als Teil dieser Analysen soll auch betrachtet werden, wie sich etwaige Schritte zur Vorverarbeitung der Dokumente auswirken. Schlussendlich soll untersucht werden, wie flexibel die verschiedenen Methoden in Bezug auf Anpassung und Veränderung sind.
+
+Die konkrete Umsetzung im Rahmen eines zur Veröffentlichung fertigen Produktes ist nicht Teil der Zielsetzung.
+
+\section{Methodisches Vorgehen}
+\label{sec:methodisches-vorgehen}
+
+Zuerst werden verschiedene Ansätze aus wissenschaftlichen Quellen sowie existierende Software-Bibliotheken und kommerzielle Produkte recherchiert und auf Erfüllung der definierten Anforderungen überprüft. Ansätze, die die Kriterien erfüllen, werden anschließend umgesetzt. Es werden verschiedene Tests zur Bestimmung von Genauigkeit und empirischer Laufzeit durchgeführt. Dazu werden sowohl öffentlich verfügbare Datensätze als auch von Multidata zur Verfügung gestellte Datensätze genutzt. Die Ergebnisse werden anschließend grafisch aufbereitet und verglichen. Abschließend werden verschiedene Verbesserungsansätze, wie unterschiedliche Methoden zum Vorbereiten der Dokumente, implementiert und ihre Auswirkungen gemessen und dokumentiert.
