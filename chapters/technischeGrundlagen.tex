@@ -125,27 +125,40 @@ Wichtige Konzepte im Deep Learning sind:
 
 \subsubsection{Convolutional Neural Networks (CNNs)}
 \label{subsubsec:cnn}
-CNNs sind eine spezielle Art von neuronalen Netzen, die besonders für die Verarbeitung von Bilddaten geeignet sind \cite{RebalaGopinath2019AItM}. Sie nutzen Faltungsoperationen (Convolutions), um lokale Muster in den Eingabedaten zu erkennen. Wichtige Elemente von CNNs sind \cite{RebalaGopinath2019AItM}:
+CNNs sind eine spezielle Art von neuronalen Netzen, die besonders für die Verarbeitung von Bilddaten geeignet sind \cite{RebalaGopinath2019AItM}. Sie nutzen Faltungsoperationen (Convolutions), um lokale Muster in den Eingabedaten zu erkennen. Im Kontext von \glspl{CNN} gibt es verschiedene gängige Ebenentypen \cite{RebalaGopinath2019AItM}:
 
 \begin{itemize}
-	\item Convolutional Layer: Anwendung von Filtern zur Merkmalserkennung
+	\item Convolutional Layer: Anwendung von Filtern (Kernel) zur Merkmalserkennung
+	\item ReLU (Rectified Linear Unit): nach einer Faltungsschicht wird häufig eine ReLU Funktion angewandt um die Komplexität des Modells zu reduzieren; dazu werden nichtlineare Merkmale eingeführt und negative Werte auf Null gesetzt
 	\item Pooling Layer: Reduzierung der räumlichen Dimensionen
-	\item Fully Connected Layer: Klassifikation basierend auf extrahierten Merkmalen
+	\item Fully Connected Layer: verbinden jedes Neuron mit allen Neuronen der vorhergehenden Schicht; führen Klassifikation basierend auf extrahierten Merkmalen durch
 \end{itemize}
 
 CNNs haben sich als sehr leistungsfähig für Aufgaben wie Objekterkennung, Gesichtserkennung und autonomes Fahren erwiesen \cite{RebalaGopinath2019AItM}.
 
 \section{Natural Language Processing (NLP)}
 \label{sec:nlp}
+\gls{NLP} befasst sich mit dem Verstehen und der Interpretation von menschlicher
+Sprachen, gesprochen oder geschrieben, mit Hilfe maschineller Verarbeitung \cite{RebalaGopinath2019AItM}. \gls{NLP} ist nützlich für eine Vielzahl von
+Anwendungen wie Spracherkennung, Sprachübersetzungen, Zusammenfassungen,
+Fragebeantwortung, Spracherzeugung und Suchanwendungen.
 
 \subsection{Tokenisierung}
 \label{subsec:tokenisierung}
+Die Tokenisierung ist ein fundamentaler Schritt in der Verarbeitung natürlicher Sprache. Hierbei wird ein Text in einzelne Einheiten, sogenannte Token, zerlegt \cite{RebalaGopinath2019AItM}. In den meisten Fällen entsprechen diese Token einzelnen Wörtern, können aber auch Satzzeichen oder andere bedeutungstragende Elemente umfassen \cite{RebalaGopinath2019AItM}. Ein einfacher Ansatz in Englischen Texten ist dazu beispielsweise den Text bei Leerzeichen zu trennen.
 
 \subsection{Part-of-Speech Tagging}
 \label{subsec:pos-tagging}
+Im \gls{POS}-Tagging-Schritt wird jedes Wort in einem Text einer grammatikalischen Katgorie wie zum Beispiel Nomen, Verb, Adjektiv et cetera zugeordnet \cite{RebalaGopinath2019AItM}. Dieser Schritt ist wichtig, da die grammatikalische Funktion einens Wortes oft entscheidend für seine Bedeutung im Kontext ist.
 
 \subsection{Named Entity Recognition}
 \label{subsec:ner}
+\gls{NER} ist eine zentrale Aufgabe im \gls{NLP}, bei der es darum geht, benannte Entitäten in einem Text zu identifizieren und zu klassifizieren \cite{nadeau2007survey}. Benannte Entitäten sind typischerweise Eigennamen von Personen, Organisationen, Orten, aber auch Zeitangaben, Währungen und andere spezifische Bezeichnungen.
+
+\gls{NER}-Systeme müssen in der Lage sein, mehrdeutige Begriffe korrekt zu interpretieren. Beispielsweise kann "Tesla" je nach Kontext als Personenname, Unternehmensname oder als Einheit für magnetische Flussdichte verstanden werden \cite{RebalaGopinath2019AItM}.
+
+Frühe \gls{NER}-Systeme basierten hauptsächlich auf manuell erstellten Regeln und Wörterbüchern \cite{nadeau2007survey}. Moderne Ansätze nutzen jedoch zunehmend maschinelle Lernverfahren, insbesondere überwachtes Lernen. Dabei werden Modelle auf großen, annotierten Texten trainiert, um Muster und Kontexte zu erkennen, die auf benannte Entitäten hindeuten \cite{nadeau2007survey}.
+Diese beiden Ansätze können auch kombiniert werden, um die Flexibilität des maschinellen Lernens mit domänenspezifischen Wissen zu kombinieren \cite{nadeau2007survey}. Dies verbessert die Genauigkeit und hat sich als besonders effektiv erwiesen. Die Leistungsfähigkeit wird dabei typischerweise anhand von Präzision und Recall der gemessen.
 
 \section{Transformer-Architekturen und Large Language Models}
 \label{sec:transformers-llms}
