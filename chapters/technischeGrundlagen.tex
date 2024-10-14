@@ -178,7 +178,7 @@ Kernelemente der Transformer-Architektur sind \cite{VaswaniAshish2023AIAY}:
 Die Transformer-Architektur hat sich aufgrund ihrer Skalierbarkeit und Effizienz als Grundlage für viele moderne Sprachmodelle etabliert \cite{VaswaniAshish2023AIAY}.
 
 \subsection{BERT und verwandte Modelle}
-\label{subsec:bert}
+\label{subsec:bert-und-verwandte-modelle}
 
 Die von \textcite{DevlinJacob2019BPoD} vorgestellte \gls{BERT}-Technologie war ein weiterer bedeutender Fortschritt in der Anwendung von Transformer-Architekturen. BERT verwendet eine bidirektionale Vortrainingsmethode, die es dem Modell ermöglicht, Kontext aus beiden Richtungen zu berücksichtigen \cite{DevlinJacob2019BPoD}.
 
@@ -231,9 +231,46 @@ Trotz ihrer beeindruckenden Fähigkeiten stehen \glspl{LLM} vor mehreren Herausf
 
 \section{Evaluation und Metriken}
 \label{sec:evaluation-metrics}
+	
+In der Evaluation von Machine-Learning-Modellen, insbesondere bei Klassifikationsaufgaben, spielt die Konfusionsmatrix eine zentrale Rolle. Sie bietet eine übersichtliche Darstellung der Vorhersageergebnisse eines Modells im Vergleich zu den tatsächlichen Klassen.
 
-\subsection{Precision, Recall und F1-Score}
-\label{subsec:precision-recall-f1}
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{10pt}
+\begin{table}
+	\centering
+	\begin{tabular}{|>{\rotatebox[origin=c]{90}{\parbox{3cm}{\centering\large\textbf{Predicted Class}}}}c|c|c|}
+		\hline
+		\multicolumn{1}{|c|}{\cellcolor{yellow!20}} &
+		\multicolumn{2}{c|}{\cellcolor{yellow!20}\large\textbf{Actual Class}} \\
+		\hline
+		& \cellcolor{green!20}\large\begin{tabular}{@{}c@{}}True Positives\end{tabular} & 
+		\cellcolor{pink!50}\large\begin{tabular}{@{}c@{}}False Positives\end{tabular} \\
+		\hline
+		& \cellcolor{pink!50}\large\begin{tabular}{@{}c@{}}False Negatives\end{tabular} & 
+		\cellcolor{green!20}\large\begin{tabular}{@{}c@{}}True Negatives\end{tabular} \\
+		\hline
+	\end{tabular}
+	\caption{Konfusionsmatrix zur Darstellung der Klassifikationsergebnisse eines Machine-Learning-Modells; richtige Ergebnisse sind grün markiert, falsche Ergebnisse sind rot markiert \cite{PowersDavidM.W2020Efpr}}
+	\label{fig:konfusionsmatrix}
+\end{table}
+
+Die in Abbildung \ref{fig:konfusionsmatrix} dargestellte Konfusionsmatrix zeigt vier wichtige Kategorien:
+
+\begin{itemize}
+	\item Richtig Positive (RP): Korrekt als positiv klassifizierte Instanzen.
+	\item Falsch Positive (FP): Fälschlicherweise als positiv klassifizierte Instanzen.
+	\item Falsch Negative (FN): Fälschlicherweise als negativ klassifizierte Instanzen.
+	\item Richtig Negative (RN): Korrekt als negativ klassifizierte Instanzen.
+\end{itemize}
+
+Basierend auf den Werten dieser Matrix können, wie von \textcite{PowersDavidM.W2020Efpr} beschriben, Metriken zur Leistung des Modells berechnet werden:
+
+\begin{itemize}
+	\item Genauigkeit (Accuracy) = $\frac{RP + RN}{RP + FP + FN + RN}$
+	\item Präzision = $\frac{RP}{RP + FP}$
+	\item Sensitivität (Recall) = $\frac{RP}{RP + FN}$
+	\item F1-Score = $2 \cdot \frac{\text{Präzision} \cdot \text{Sensitivität}}{\text{Präzision} + \text{Sensitivität}}$
+\end{itemize}
 
 \subsection{Micro-F1 und Macro-F1}
 \label{subsec:micro-macro-f1}

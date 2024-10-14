@@ -19,10 +19,17 @@
 %    APA Zitierstil: 'apa'
 %%%-----------------------------------------------------------------------------
 
+% Packages für Tabellen
+\usepackage[table]{xcolor}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{adjustbox}
+
 \usepackage[acronym,toc]{glossaries}
 \makeglossaries
 \input{acronyms}
 
+\DocumentMetadata{lang=de}
 \graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
 \logofile{logo}           % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
 \bibliography{references} % Biblatex-Literaturdatei (references.bib)
