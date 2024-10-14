@@ -272,23 +272,23 @@ Basierend auf den Werten dieser Matrix können, wie von \textcite{PowersDavidM.W
 	\item F1-Score = $2 \cdot \frac{\text{Präzision} \cdot \text{Sensitivität}}{\text{Präzision} + \text{Sensitivität}}$
 \end{itemize}
 
-\subsection{Micro-F1 und Macro-F1}
-\label{subsec:micro-macro-f1}
-
 \section{Lernparadigmen und Aufgabenkategorien}
 \label{sec:lernparadigmen-aufgabenkategorien}
 
 \subsection{Transfer Learning}
 \label{subsec:transfer-learning}
+Wie von \textcite{PanSinnoJialin2010ASoT} bezeichnet Transfer Learning die Übertragung des nützlichen Wissens eines Modells im Bezug auf ein Kernszenario auf ein Zielszenario. Dies ist besonders nützlich, wenn für das Zielszenario wenig gelabelten verfügbar sind, da dadurch das Lernen stark verbessert werden kann.
+
+Laut \textcite{BrownTomB2020LMaF} kann ein \gls{LLM} beispielsweise, das auf einer vielfältigen Datenmenge vortrainiert wurde, Wissen auf neue Aufgaben übertragen, ohne dass spezifisches Fine-Tuning erforderlich ist.
 
 \subsection{Few-Shot Learning}
 \label{subsec:few-shot-learning}
+Few-Shot Learning bezeichnet die Fähigkeit eines Modells, neue Aufgaben mit nur einer geringen Anzahl von Beispielen zu lösen. \textcite{BrownTomB2020LMaF} zeigen, dass \glspl{LLM} beispielsweise in der Lage sind, mit wenigen Beispielen (typischerwies 10 bis 100) neue Aufgabe zu erlernen ohne eine Neuanpassung oder Feinjustirung des Modells zu benötigen. Dies bedeutet, dass das Modell die Fähigkeit besitzt, aus einer begrenzten Anzahl von Beispielen zu generalisieren und die Aufgabe zu verstehen, ohne dass seine grundlegenden Parameter verändert werden müssen \cite{BrownTomB2020LMaF}.
 
 \subsection{Zero-Shot Learning}
 \label{subsec:zero-shot-learning}
-
-\subsection{Meta-Learning}
-\label{subsec:meta-learning}
+Im Gegensatz zu Few-Shot Learning versucht Zero-Shot Learning Aufgaben ohne spezifische Trainingsbeispiele zu lösen. \textcite{XianYongqin2019ZLCE} definieren Zero-Shot Learning als die Fähigkeit, Instanzen von Klassen zu erkennen, die während des Trainings nicht gesehen wurden, indem Transferwissen von gesehenen Klassen genutzt wird.
 
 \subsection{Multitask Learning}
 \label{subsec:multitask-learning}
+Multitask Learning zielt daruaf ab ein Modell in mehreren Aufgaben zu trainieren. \textcite{PuriRaul2019ZTCW} zeigt beispielsweise, wie ein einziges generatives Sprachmodell für verschiedene Textklassifizierungsaufgaben verwendet werden kann, indem die Aufgaben als Frage-Antwort-Probleme formuliert werden.
