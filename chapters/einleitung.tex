@@ -7,23 +7,23 @@
 \subsection{Allgemeine Motivation}
 \label{subsec:allgemeine-motivation}
 
-Die automatisierte Verarbeitung von Dokumenten zur Gewinnung strukturierter Daten hat in den letzten Jahren erheblich an Bedeutung gewonnen. Dies liegt vor allem an der zunehmenden Digitalisierung von Geschäftsprozessen. Dokumentenverarbeitungssysteme ermöglichen eine erhebliche Zeit- und Kosteneinsparung. Die Reduktion des Bedarfs an manueller Dateneingabe reduziert gleichzeitig das Potenzial für menschliche Fehler \cite{PerotVincent2024LLMD}. % ganzer Absatz gemeint
+Die automatisierte Dokumentenverarbeitung zur Gewinnung strukturierter Daten gewinnt zunehmend an Bedeutung. Unternehmen digitalisieren ihre Geschäftsprozesse und nutzen Dokumentenverarbeitungssysteme, um Zeit und Kosten zu sparen. Diese Systeme reduzieren den Bedarf an manueller Dateneingabe und minimieren so das Risiko menschlicher Fehler \cite{PerotVincent2024LLMD}.
 
-Die Relevanz dieses Themas wird durch die praktische Anwendung in der Industrie unterstrichen. Dies zeigt sich auch darin, dass die Aufgabenstellung für diese Bachelorarbeit von der Firma Multidata, einem Unternehmen mit Expertise in der Entwicklung von Dokumentenverarbeitungssystemen, zur Verfügung gestellt wurde.
+Die Industrie wendet dieses Thema praktisch an. Die Firma Multidata, welche selbst ein Hersteller eines Dokumentenverarbeitungssystems, stellt die Aufgabenstellung für diese Bachelorarbeit und unterstreicht damit die Relevanz des Themas.
 
 \subsection{Ausgangslage}
 \label{subsec:ausgangslage}
 
-Die Firma Multidata bietet momentan ein Zonal-\gls{OCR}-basiertes\ref{subsubsec:zonal-ocr-parser} System zur Umsetzung der genannten Punkte an. Dabei müssen Benutzer*innen zunächst manuell Vorlagen definieren, durch welche später die Verarbeitung von Dokumenten mit dem selben Format erfolgt. Da dieses System einen hohen manuellen Aufwand erfordert, soll es durch ein System mit höherem Automatisierungsgrad ersetzt werden. Auf die Funktionsweise dieses Systems wird im Kapitel \ref{sec:analyse-des-akutell-eingesetzten-systems} genauer eingegangen.
+Multidata nutzt aktuell ein Zonal-\gls{OCR}-basiertes\ref{subsubsec:zonal-ocr-parser} System. Benutzer*innen definieren manuell Vorlagen für die Verarbeitung gleichartiger Dokumente. Dieses System erfordert einen hohen manuellen Aufwand. Ein System mit höherem Automatisierungsgrad soll es ersetzen. Kapitel \ref{sec:analyse-des-akutell-eingesetzten-systems} erläutert die Funktionsweise des aktuellen Systems detailliert.
 
 \section{Problemstellung}
 \label{sec:problemstellung}
 
-Die Aufgaben des angestrebten Dokumentenverarbeitungssystems können in zwei Kernaufgaben aufgeteilt werden: Kategorisierung der Dokumente und Datenextraktion.
+Das angestrebte Dokumentenverarbeitungssystem umfasst zwei Kernaufgaben: Dokumentenkategorisierung und Datenextraktion.
 
-Um später bestimmen zu können, welche Daten aus einem Dokument extrahiert werden sollen, muss zuerst bekannt sein, um welche Art von Dokument es sich handelt. Diese Kategorisierung soll das System selbstständig erledigen. Dabei wird eine Lösung angestrebt, die die dynamische Konfiguration der verfügbaren Kategorien ermöglicht, um eine einfache Erweiterung um neue Dokumententypen ohne große Systemänderungen oder erneutes Training eines Modells zu ermöglichen.
+Das System muss zunächst selbstständig die Art des Dokuments bestimmen. Eine dynamische Konfiguration der verfügbaren Kategorien ermöglicht die einfache Erweiterung um neue Dokumententypen ohne umfangreiche Systemänderungen oder erneutes Modelltraining.
 
-Anschließend müssen die für die Kategorie vorgesehenen Daten extrahiert werden. Dabei soll die Lösung dem*der Benutzer*in die Möglichkeit bieten, die zu extrahierenden Informationen und deren Datentyp zu definieren. Außerdem müssen die Ergebnisse der Datenextraktion in eine strukturierte Form gebracht werden, um diese anschließend automatisiert weiterverarbeiten zu können.
+Anschließend extrahiert das System die für die Kategorie vorgesehenen Daten. Benutzer*innen definieren die zu extrahierenden Informationen und deren Datentyp. Das System überführt die extrahierten Daten in eine strukturierte Form zur automatisierten Weiterverarbeitung.
 
 Da insbesondere im Umgang mit sensiblen Dokumenten der Datenschutz und die Sicherheit sehr wichtig sind, besteht die Notwendigkeit, das Dokumentenverarbeitungssystem lokal und ohne Übermittlung von Daten an externe Dienste zu betreiben \cite{HuangYupan2022LPfD}. Zusätzlich soll das System plattformunabhängig sein und sowohl auf Windows- als auch auf Linux-Betriebssystemen lauffähig sein, um die Deploymentmöglichkeiten für die Kunden der Firma Multidata zu verbessern.
 
