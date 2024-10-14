@@ -81,7 +81,7 @@ Um diese Probleme zu minimieren, wurde mit \gls{DONUT} ein End-to-End-Modell ent
 
 Ein weiterer vielversprechender Ansatz der Dokumentenextraktion nutzt die großen Fortschritte bei der Entwicklung von \glspl{LLM}. Die Methode wird als \gls{LMDX} bezeichnet und verwendet Prompting, um die Extraktion von Informationen aus visuell anspruchsvollen Dokumenten mithilfe von \glspl{LLM} zu ermöglichen \cite{PerotVincent2024LLMD}.
 
-Der \gls{LMDX}-Ansatz, wie von Perot et al. beschrieben \cite{PerotVincent2024LLMD}, besteht aus vier Hauptschritten:
+Der \gls{LMDX}-Ansatz, wie von \textcite{PerotVincent2024LLMD} beschrieben, besteht aus vier Hauptschritten:
 
 \begin{enumerate}
     \item Chunking: Das Dokument wird in kleinere Teile zerlegt, die vom \gls{LLM} verarbeitet werden können.
@@ -112,7 +112,7 @@ LMDX$_\text{PaLM 2-S}$ & T+L & \textbf{66.95} \\
 LMDX$_\text{Gemini Pro}$ & T+L & \underline{66.03} \\
 \hline
 \end{tabular}
-\caption{Micro-F1-Wert verschiedener Sprachmodell-basierten Dokumentenverarbeitungstechniken von Zero-Shot-Tests anhand des CORD \cite{park2019cord} Datensatzes, durchgeführt durch Perot et al.\cite{PerotVincent2024LLMD} (T → Text, L → Layout, I → Image) }
+\caption{Micro-F1-Wert verschiedener Sprachmodell-basierten Dokumentenverarbeitungstechniken von Zero-Shot-Tests anhand des CORD \cite{park2019cord} Datensatzes, durchgeführt durch \textcite{PerotVincent2024LLMD} (T → Text, L → Layout, I → Image) }
 \label{tab:lmdx_cord_zero_shot_results}
 \end{table}
 
@@ -184,7 +184,7 @@ Liegen Dokumente unterschiedlichen Typs gemischt vor, ist es wichtig, dass das S
 \subsubsection{Bildbasierte Klassifizierung}
 \label{subsubsec:bild-basierte-klassifizieurng}
 
-Bei bildbasierten Klassifizierungsverfahren wird versucht, die Bilder der Dokumente direkt zu klassifizieren. Wie von Harley et al. beschrieben, können dazu beispielsweise CNNs genutzt werden \cite{HarleyAdamW2015EoDC}. Dabei können entweder holistische CNNs auf das ganze Bild angewandt oder ein Ensemble von regionsspezifischen CNNs verwendet werden. Letztere werden spezifisch für bestimmte Regionen des Dokuments trainiert und später auf diese Regionen angewandt. Die Resultate dieser Netze ergeben zusammen das Gesamtergebnis. Bei der Anwendung von CNNs zur Bildklassifizierung kann bei einer ausreichenden Menge von Trainingsdaten eine Genauigkeit von 85-90\% erwartet werden.
+Bei bildbasierten Klassifizierungsverfahren wird versucht, die Bilder der Dokumente direkt zu klassifizieren. Wie von \textcite{HarleyAdamW2015EoDC} beschrieben, können dazu beispielsweise CNNs genutzt werden. Dabei können entweder holistische CNNs auf das ganze Bild angewandt oder ein Ensemble von regionsspezifischen CNNs verwendet werden. Letztere werden spezifisch für bestimmte Regionen des Dokuments trainiert und später auf diese Regionen angewandt. Die Resultate dieser Netze ergeben zusammen das Gesamtergebnis. Bei der Anwendung von CNNs zur Bildklassifizierung kann bei einer ausreichenden Menge von Trainingsdaten eine Genauigkeit von 85-90\% erwartet werden.
 
 Problematisch bei diesem Ansatz im Bezug auf die Anforderungen ist, dass er eine große Menge von Trainingsdaten erfordert, welche aus Bildern und der dazugehörigen Kategorie bestehen. Dadurch wird die Flexibilität im Bezug auf die Möglichkeit, die Menge der Dokumententypen zu vergrößern beziehungsweise zu verkleinern, stark eingeschränkt, da dazu ein Neutrainieren des Modells sowie die nötigen Daten erforderlich sind.
 
@@ -220,17 +220,17 @@ Zur Bewältigung dieser Herausforderungen können verschiedene Ansätze genutzt 
     
     \item \gls{DONUT} \cite{KimGeewook2022ODUT} umgeht die sprachlichen Einschränkungen vieler \gls{OCR}-Systeme, indem es gänzlich ohne diese auskommt.
     
-    \item Der \gls{LMDX}-Ansatz \cite{PerotVincent2024LLMD}, basierend auf multimodalen \glspl{LLM}, kann wie von Biswas et al. \cite{BiswasAnjanava2024RoSD} demonstriert, eingesetzt werden. Dies ist jedoch nur für Dokumentensprachen sinnvoll, die das verwendete Modell unterstützt.
+    \item Der \gls{LMDX}-Ansatz \cite{PerotVincent2024LLMD}, basierend auf multimodalen \glspl{LLM}, kann wie von \textcite{BiswasAnjanava2024RoSD} demonstriert, eingesetzt werden. Dies ist jedoch nur für Dokumentensprachen sinnvoll, die das verwendete Modell unterstützt.
 \end{enumerate}
 
-Eine weitere Herausforderung stellen kulturelle Unterschiede beim Layout der Dokumente dar \cite{KimGeewook2022ODUT}. Flexible Modellarchitekturen, wie von Kim et al. \cite{KimGeewook2022ODUT} und Perot et al. \cite{PerotVincent2024LLMD} vorgestellt, können verschiedene Layoutstile lernen und sich so besser an kulturelle Variationen anpassen.
+Eine weitere Herausforderung stellen kulturelle Unterschiede beim Layout der Dokumente dar \cite{KimGeewook2022ODUT}. Flexible Modellarchitekturen, wie von  \textcite{KimGeewook2022ODUT} und \textcite{PerotVincent2024LLMD} vorgestellt, können verschiedene Layoutstile lernen und sich so besser an kulturelle Variationen anpassen.
 
-Die Evaluierung und das Benchmarking mehrsprachiger Systeme erfordern repräsentative und diverse Datensätze, wie Subramani et al. \cite{SubramaniNishant2021ASoD} betonen. Zudem sind ethische Überlegungen zur Fairness und Vermeidung von Bias gegenüber bestimmten Sprachen oder Kulturen von großer Bedeutung. Alle betrachteten Sprachen oder kulturellen Layoutunterschiede sollten ausgewogen in Trainings- und Testdaten enthalten sein.
+Die Evaluierung und das Benchmarking mehrsprachiger Systeme erfordern repräsentative und diverse Datensätze, wie \textcite{SubramaniNishant2021ASoD} betonen. Zudem sind ethische Überlegungen zur Fairness und Vermeidung von Bias gegenüber bestimmten Sprachen oder Kulturen von großer Bedeutung. Alle betrachteten Sprachen oder kulturellen Layoutunterschiede sollten ausgewogen in Trainings- und Testdaten enthalten sein.
 
 \subsection{Skalierbarkeit und Performanz}
 \label{subsec:skalierbarkeit-und-performanz}
 
-Die Skalierbarkeit und Performanz automatisierter Dokumentenverarbeitungssysteme stellen kritische Herausforderungen dar, insbesondere angesichts wachsender Datenmengen und komplexerer Verarbeitungsanforderungen. Perot et al. \cite{PerotVincent2024LLMD} adressieren diese Problematik in ihrer Arbeit zu \gls{LMDX}, indem sie Ansätze zur effizienten Verarbeitung großer Dokumentmengen mit \glspl{LLM} vorstellen. Ihr Chunking-Algorithmus ermöglicht die Verarbeitung umfangreicher Dokumente, indem er diese in kleinere, vom \gls{LLM} verarbeitbare Teile zerlegt.
+Die Skalierbarkeit und Performanz automatisierter Dokumentenverarbeitungssysteme stellen kritische Herausforderungen dar, insbesondere angesichts wachsender Datenmengen und komplexerer Verarbeitungsanforderungen. \textcite{PerotVincent2024LLMD} adressieren diese Problematik in ihrer Arbeit zu \gls{LMDX}, indem sie Ansätze zur effizienten Verarbeitung großer Dokumentmengen mit \glspl{LLM} vorstellen. Ihr Chunking-Algorithmus ermöglicht die Verarbeitung umfangreicher Dokumente, indem er diese in kleinere, vom \gls{LLM} verarbeitbare Teile zerlegt.
 
 Ansätze wie \gls{DONUT} \cite{KimGeewook2022ODUT} erzielen eine bedeutende Performanzsteigerung, indem sie den rechenintensiven \gls{OCR}-Schritt einsparen.
 

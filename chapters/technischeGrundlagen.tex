@@ -68,36 +68,35 @@ Die großen Fortschritte im Bereich des Machine Learning in den letzten Jahren s
 Im Rahmen von \gls{ML} gibt es verschiedene Unterarten, welche in den folgenden Absätzen besprochen werden, einen Überblick darüber bietet die Abbildung \ref{fig:ml-hierarchy}.
 
 \begin{figure}[h]
-\centering
-\begin{tikzpicture}[font=\sffamily]
-    % Define colors
-    \definecolor{outercolor}{RGB}{70,50,120}
-    \definecolor{middlecolor}{RGB}{90,70,140}
-    \definecolor{innercolor}{RGB}{110,90,160}
-    \definecolor{innermostcolor}{RGB}{130,110,180}
-
-    % Outer circle (Artificial Intelligence)
-    \draw[dashed, outercolor] (0,0) circle (5cm);
-    \node[outercolor] at (0,3.9) {\Large\textbf{Artificial Intelligence}};
-
-    % Middle circle (Machine Learning)
-    \draw[dashed, middlecolor] (0,0) circle (3.5cm);
-    \node[middlecolor] at (0,2.3) {\Large\textbf{Machine Learning}};
-
-    % Inner circle (Deep Learning)
-    \draw[dashed, innercolor] (0,0) circle (2cm);
-    \node[innercolor] at (0,0.8) {\Large\textbf{Deep Learning}};
-
-    % Innermost circle (RNNs)
-    \draw[dashed, innermostcolor] (-0.9,-0.5) circle (0.8cm);
-    \node[innermostcolor] at (-0.9,-0.5) {\textbf{CNNs}};
-
-    \draw[dashed, innermostcolor] (0.9,-0.5) circle (0.8cm);
-    \node[innermostcolor] at (0.9,-0.5) {\textbf{RNNs}};
-
-\end{tikzpicture}
-\caption{Zusammenhang von Machine Learning, neuronalen Netzen, Deep Learning, \glspl{CNN} und \glspl{RNN}}
-\label{fig:ml-hierarchy}
+	\centering
+	\begin{tikzpicture}[font=\sffamily]
+		% Define colors
+		\definecolor{outercolor}{RGB}{70,50,120}
+		\definecolor{middlecolor}{RGB}{90,70,140}
+		\definecolor{innermiddlecolor}{RGB}{100,80,150}
+		\definecolor{innercolor}{RGB}{110,90,160}
+		\definecolor{innermostcolor}{RGB}{130,110,180}
+		% Outer circle (Artificial Intelligence)
+		\draw[dashed, outercolor] (0,0) circle (5cm);
+		\node[outercolor] at (0,3.8) {\Large\textbf{Artificial Intelligence}};
+		% Middle circle (Machine Learning)
+		\draw[dashed, middlecolor] (0,-0.5) circle (3.8cm);
+		\node[middlecolor] at (0, 2.1) {\Large\textbf{Machine Learning}};
+		% Inner-middle circle (Neuronale Netze)
+		\draw[dashed, innermiddlecolor] (0,-1) circle (2.6cm);
+		\node[innermiddlecolor] at (0,0.3) {\Large\textbf{Neuronale Netze}};
+		% Inner circle (Deep Learning)
+		\draw[dashed, innercolor] (0,-1.6) circle (1.6cm);
+		\node[innercolor] at (0,-0.6) {\Large\textbf{Deep}};
+		\node[innercolor] at (0,-1) {\Large\textbf{Learning}};
+		% Innermost circles (CNNs and RNNs)
+		\draw[dashed, innermostcolor] (-0.7,-1.9) circle (0.6cm);
+		\node[innermostcolor] at (-0.7,-1.9) {\textbf{CNNs}};
+		\draw[dashed, innermostcolor] (0.7,-1.9) circle (0.6cm);
+		\node[innermostcolor] at (0.7,-1.9) {\textbf{RNNs}};
+	\end{tikzpicture}
+	\caption{Zusammenhang von Machine Learning, neuronalen Netzen, Deep Learning, \glspl{CNN} und \glspl{RNN}}
+	\label{fig:ml-hierarchy}
 \end{figure}
 
 \subsection{Neuronale Netze}
@@ -158,7 +157,7 @@ Im \gls{POS}-Tagging-Schritt wird jedes Wort in einem Text einer grammatikalisch
 \gls{NER}-Systeme müssen in der Lage sein, mehrdeutige Begriffe korrekt zu interpretieren. Beispielsweise kann "Tesla" je nach Kontext als Personenname, Unternehmensname oder als Einheit für magnetische Flussdichte verstanden werden \cite{RebalaGopinath2019AItM}.
 
 Frühe \gls{NER}-Systeme basierten hauptsächlich auf manuell erstellten Regeln und Wörterbüchern \cite{nadeau2007survey}. Moderne Ansätze nutzen jedoch zunehmend maschinelle Lernverfahren, insbesondere überwachtes Lernen. Dabei werden Modelle auf großen, annotierten Texten trainiert, um Muster und Kontexte zu erkennen, die auf benannte Entitäten hindeuten \cite{nadeau2007survey}.
-Diese beiden Ansätze können auch kombiniert werden, um die Flexibilität des maschinellen Lernens mit domänenspezifischen Wissen zu kombinieren \cite{nadeau2007survey}. Dies verbessert die Genauigkeit und hat sich als besonders effektiv erwiesen. Die Leistungsfähigkeit wird dabei typischerweise anhand von Präzision und Recall der gemessen.
+Diese beiden Ansätze können auch kombiniert werden, um die Flexibilität des maschinellen Lernens mit domänenspezifischen Wissen zu kombinieren \cite{nadeau2007survey}. Dies verbessert die Genauigkeit und hat sich als besonders effektiv erwiesen. Die Leistungsfähigkeit wird dabei typischerweise anhand von Präzision und Recall gemessen.
 
 \section{Transformer-Architekturen und Large Language Models}
 \label{sec:transformers-llms}
@@ -166,8 +165,29 @@ Diese beiden Ansätze können auch kombiniert werden, um die Flexibilität des m
 \subsection{Transformer-Architektur}
 \label{subsec:transformer-architecture}
 
+Die Transformer-Architektur, erstmals von \textcite{VaswaniAshish2023AIAY}. vorgestellt, revolutionierte das Feld des maschinellen Lernens für natürliche Sprache. Im Gegensatz zu früheren rekurrenten oder faltungsbasierten Modellen basiert der Transformer vollständig auf Aufmerksamkeitsmechanismen (Attention), was eine effizientere Verarbeitung langer Sequenzen ermöglicht.
+
+Kernelemente der Transformer-Architektur sind \cite{VaswaniAshish2023AIAY}:
+\begin{itemize}
+	\item Multi-Head Attention: Ermöglicht dem Modell, verschiedene Aspekte der Eingabe parallel zu berücksichtigen.
+	\item Positionscodierung: Fügt Informationen über die Reihenfolge der Tokens hinzu, da die Attention-Mechanismen selbst keine Reihenfolge berücksichtigen.
+	\item Feed-Forward-Netzwerke: Verarbeiten die Ausgaben der Attention-Layer weiter.
+	\item Residuale Verbindungen und Layer-Normalisierung: Verbessern den Informationsfluss und stabilisieren das Training.
+\end{itemize}
+
+Die Transformer-Architektur hat sich aufgrund ihrer Skalierbarkeit und Effizienz als Grundlage für viele moderne Sprachmodelle etabliert \cite{VaswaniAshish2023AIAY}.
+
 \subsection{BERT und verwandte Modelle}
 \label{subsec:bert}
+
+Die von \textcite{DevlinJacob2019BPoD} vorgestellte \gls{BERT}-Technologie war ein weiterer bedeutender Fortschritt in der Anwendung von Transformer-Architekturen. BERT verwendet eine bidirektionale Vortrainingsmethode, die es dem Modell ermöglicht, Kontext aus beiden Richtungen zu berücksichtigen \cite{DevlinJacob2019BPoD}.
+
+Wichtige Aspekte dieses Trainingsprozesses sind \cite{DevlinJacob2019BPoD}:
+\begin{itemize}
+	\item Masked Language Model (MLM): Trainiert das Modell, maskierte Wörter in einem Satz vorherzusagen.
+	\item Next Sentence Prediction (NSP): Trainiert das Modell, die Beziehung zwischen Satzpaaren zu verstehen.
+\end{itemize}
+ \gls{BERT}\cite{DevlinJacob2019BPoD} sowie Varianten wie ALBERT\cite{LanZhenzhong2019AALB} oder RoBERTa\cite{liu2019robertarobustlyoptimizedbert} haben zu signifikanten Verbesserungen in vielen natürlichen Sprachverarbeitungsaufgaben geführt.
 
 \subsection{Large Language Models (LLMs)}
 \label{subsec:llms}
