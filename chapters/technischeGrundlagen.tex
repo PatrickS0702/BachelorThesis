@@ -191,12 +191,43 @@ Wichtige Aspekte dieses Trainingsprozesses sind \cite{DevlinJacob2019BPoD}:
 
 \subsection{Large Language Models (LLMs)}
 \label{subsec:llms}
+Large Language Models (LLMs) stellen eine bedeutende Weiterentwicklung in der Verarbeitung natürlicher Sprache dar. Diese Transformer-basierten Modelle zeichnen sich durch eine enorme Anzahl von Parametern aus und werden auf sehr großen Textkorpora trainiert \cite{VaswaniAshish2023AIAY}.
 
-\subsubsection{LLAMA}
-\label{subsubsec:LLAMA}
+Bemerkenswerte Fähigkeiten von \glspl{LLM} sind dabei:
+
+\begin{itemize}[]
+	\item Skalierung: Die Leistung verbessert sich oft mit zunehmender Modellgröße und Datenmenge \cite{TouvronHugo2023LOaE}.
+	 
+	\item Emergente Fähigkeiten: Unerwartete Fähigkeiten, die erst ab einer bestimmten Modellgröße auftreten, wie beispielsweise das Erkennen von Musten in daten, verbessertes Kontext Verständnis, komplexes Argumentieren und kreatives Schreiben \cite{BrownTomB2020LMaF}.
+	 
+	\item Few-Shot Learning: Die Fähigkeit, neue Aufgaben mit wenigen oder keinen spezifischen Trainingsbeispielen zu lernen \cite{BrownTomB2020LMaF}.
+	
+	\item Transfer Learning: LLMs können das auf großen allgemeinen Textkorpora erlernte Wissen auf spezifische Aufgaben übertragen \cite{DevlinJacob2019BPoD}.
+	
+	\item Multimodalität: Neuere LLMs integrieren zunehmend Fähigkeiten zur Verarbeitung verschiedener Modalitäten wie Text und Bilder \cite{LiJunnan2023BBLP}.
+\end{itemize}
+
+\subsubsection{LLaMA}
+\label{subsubsec:LLaMA}
+Für die Aufgabenstellung besonders interessant sind, die von \textcite{TouvronHugo2023LOaE} erstmals vorgestellten Modelle der LLaMa Reihe. Diese sind in Größen von 7-65 Milliarden Parametern verfügbar und wurden auf Basis von öffentlichen Daten trainiert \cite{TouvronHugo2023LOaE}. Dabei wurde gezeigt, dass es möglich ist, leistungsfähige Sprachmodelle mit öffentlichen Daten zu trainieren, was die Forschung und Entwicklung in diesem Bereich demokratisiert. Die Autoren betonen, dass LLaMA auf einer Vielzahl von Benchmarks, einschließlich Aufgaben zum Schlussfolgern, Lesen und mathematischem Denken, wettbewerbsfähige oder überlegene Ergebnisse im Vergleich zu Modellen ähnlicher Größe erzielt \cite{TouvronHugo2023LOaE}.
+Die neueste Version, LLaMa 3, erweitert diese Fähigkeiten deutlich. Sie bietet Modelle mit bis zu 405 Milliarden Parametern, die auf etwa 15 Billionen mehrsprachigen Tokens trainiert wurden \cite{HartshornAnthony2024TL3H}. Besonders die Mehrsprachigkeit sowie die deutlich verbesserte Leistung, die laut den Autoren mit führenden Modellen wie GPT-4 vergleichbar ist, kombiniert mit der Tatsache, dass LLAMA 3, einschließlich des 405B-Modells, von Meta öffentlich freigegebn wurde, machen das System zur Umsetzung von Techniken, wie \gls{LMDX}\ref{subsec:language-model-basierte-document-information-extraction} besonders interressant.
 
 \subsection{Herausforderungen und Einschränkungen}
 \label{subsec:llm-challenges}
+
+Trotz ihrer beeindruckenden Fähigkeiten stehen \glspl{LLM} vor mehreren Herausforderungen:
+
+\begin{itemize}
+	\item Rechenaufwand und Energieverbrauch: Das Training großer Modelle erfordert erhebliche Rechenressourcen. \textcite{TouvronHugo2023LOaE} berichten, dass das Training ihrer größten LLAMA-Modelle mehrere Tage auf Tausenden von GPUs benötigte.
+	
+	\item Bias und Fairness: \glspl{LLM} können voreingenommene oder unfaire Ausgaben produzieren, die gesellschaftliche Vorurteile widerspiegeln. \textcite{BrownTomB2020LMaF} diskutieren dieses Problem und betonen die Notwendigkeit, es bei der Entwicklung und Anwendung von \glspl{LLM} zu berücksichtigen.
+	
+	\item Halluzinationen: \glspl{LLM} können plausibel klingende, aber falsche Informationen generieren. \textcite{JiangZhengbao2020HCWK} untersuchen dieses Phänomen und betonen die Schwierigkeit, den wahren Wissensstand eines \gls{LLM} zu bestimmen.
+	
+	\item Interpretierbarkeit: Es ist oft schwierig zu verstehen, wie \glspl{LLM} zu bestimmten Ausgaben gelangen. \textcite{DevlinJacob2019BPoD} erwähnen diese Herausforderung im Kontext von BERT, was auch für größere \glspl{LLM} relevant bleibt.
+	
+	\item Datenschutz und ethische Bedenken: Die Verwendung großer Mengen an Trainingsdaten wirft Fragen zum Datenschutz und zur ethischen Nutzung von Informationen auf \cite{TouvronHugo2023LOaE}.
+\end{itemize}
 
 \section{Evaluation und Metriken}
 \label{sec:evaluation-metrics}
