@@ -7,24 +7,24 @@ Dieses Kapitel bietet einen Überblick über die wichtigsten technischen Konzept
 \label{sec:optical-character-recognition-ocr}
 
 \gls{OCR} spielt eine Schlüsselrolle bei der Verarbeitung visueller Dokumente. 
-Sie wandelt Bilder von gedrucktem oder handgeschriebenem Text in maschinenlesbaren Text um \cite{MoriS.1992HroO}.
-Entgegen der wörtlichen Bedeutung von \gls{OCR} arbeiten viele gängige Systeme tatsächlich auf Zeichenblöcke oder ganze Wörter anstatt einzelner Zeichen \cite{BorovikovEugene2014Asom}.
-Es existiert eine Vielzahl von \gls{OCR}-Methoden, von denen einige Segmentierung nutzen, also die Zuteilung jedes Pixels zu einer Kategorie, während andere darauf verzichten \cite{BorovikovEugene2014Asom}. 
-Die meisten modernen \gls{OCR}-Systeme bestehen typischerweise aus zwei essenziellen Komponenten \cite{BorovikovEugene2014Asom}:
+Sie wandelt Bilder von gedrucktem oder handgeschriebenem Text in maschinenlesbaren Text um \parencite{MoriS.1992HroO}.
+Entgegen der wörtlichen Bedeutung von \gls{OCR} arbeiten viele gängige Systeme tatsächlich auf Zeichenblöcke oder ganze Wörter anstatt einzelner Zeichen \parencite{BorovikovEugene2014Asom}.
+Es existiert eine Vielzahl von \gls{OCR}-Methoden, von denen einige Segmentierung nutzen, also die Zuteilung jedes Pixels zu einer Kategorie, während andere darauf verzichten \parencite{BorovikovEugene2014Asom}. 
+Die meisten modernen \gls{OCR}-Systeme bestehen typischerweise aus zwei essenziellen Komponenten \parencite{BorovikovEugene2014Asom}:
 
 \begin{enumerate}
 	\item Feature Extractor: Dieser extrahiert die charakteristischen Merkmale (Deskriptoren) eines Elements aus einem Bild. Diese abgeleiteten Merkmale dienen als Eingabe für den Classifier.
 	\item Classifier: Anhand der extrahierten Merkmale bestimmt dieser das (wahrscheinlichste) bekannte Element. Zusätzlich liefert der Klassifikator einen Konfidenzwert, der die Sicherheit der Elementerkennung angibt.
 \end{enumerate}
 
-Diese grundlegende Struktur bildet die Basis für verschiedene klassische und moderne Methoden der optischen Zeichenerkennung \cite{BorovikovEugene2014Asom}:
+Diese grundlegende Struktur bildet die Basis für verschiedene klassische und moderne Methoden der optischen Zeichenerkennung \parencite{BorovikovEugene2014Asom}:
 
 \begin{itemize}
 	\item Template Matching: Vergleicht Eingabezeichen pixelweise mit bekannten Vorlagen und wählt die ähnlichste aus.
 	\item Strukturelle Klassifikation: Nutzt strukturelle Merkmale wie Striche, Löcher oder Ecken und wendet regelbasierte Systeme an.
 \end{itemize}
 
-Dabei ist zu beachten, dass es auch leichte Abweichungen und hybride Varianten dieser Techniken gibt \cite{BorovikovEugene2014Asom}. Viele moderne \gls{OCR}-Systeme verwenden mathematische Funktionen, die darauf abzielen, eine Metrik der Abweichung von einer Vorlage zu minimieren. Beispiele dafür sind \cite{BorovikovEugene2014Asom}:
+Dabei ist zu beachten, dass es auch leichte Abweichungen und hybride Varianten dieser Techniken gibt \parencite{BorovikovEugene2014Asom}. Viele moderne \gls{OCR}-Systeme verwenden mathematische Funktionen, die darauf abzielen, eine Metrik der Abweichung von einer Vorlage zu minimieren. Beispiele dafür sind \parencite{BorovikovEugene2014Asom}:
 
 \begin{itemize}
 	\item Diskriminanzfunktionen: Diese verwenden Hyperebenen im mehrdimensionalen Merkmalsraum zur Trennung von Zeichenklassen.
@@ -35,22 +35,22 @@ Dabei ist zu beachten, dass es auch leichte Abweichungen und hybride Varianten d
 \subsection{Tesseract OCR}
 \label{subsec:tesseract-ocr}
 
-Das für die im Rahmen dieser Bachelorarbeit implementierten Prototypen verwendete \gls{OCR}-System heißt Tesseract \gls{OCR}. Hewlett Packard entwickelte dieses \gls{OCR}-System ursprünglich, und seit 2005 ist es als Open-Source-Software verfügbar \cite{SmithR_2007_AOot}. Tesseract basiert auf \gls{LSTM} neuronalen Netzen und unterstützt über 100 Sprachen sowie mehr als 35 Schriftsysteme \cite{tesseract_ocr_user_manual}. 
+Das für die im Rahmen dieser Bachelorarbeit implementierten Prototypen verwendete \gls{OCR}-System heißt Tesseract \gls{OCR}. Hewlett Packard entwickelte dieses \gls{OCR}-System ursprünglich, und seit 2005 ist es als Open-Source-Software verfügbar \parencite{SmithR_2007_AOot}. Tesseract basiert auf \gls{LSTM} neuronalen Netzen und unterstützt über 100 Sprachen sowie mehr als 35 Schriftsysteme \parencite{tesseract_ocr_user_manual}. 
 
 \subsubsection{Architektur und Funktionsweise}
 \label{subsubsec:architektur-und-funktionsweise}
 
-Tesseract folgt einem traditionellen Pipeline-Ansatz für die Texterkennung, wobei einige Schritte zur Zeit ihrer Entwicklung innovativ waren \cite{SmithR_2007_AOot}. Der Prozess beginnt mit einer Analyse verbundener Komponenten, bei der das System die Umrisse der Komponenten speichert. Diese Methode ermöglicht es Tesseract, sowohl schwarzen Text auf weißem Hintergrund als auch umgekehrt zu erkennen \cite{SmithR_2007_AOot}.
+Tesseract folgt einem traditionellen Pipeline-Ansatz für die Texterkennung, wobei einige Schritte zur Zeit ihrer Entwicklung innovativ waren \parencite{SmithR_2007_AOot}. Der Prozess beginnt mit einer Analyse verbundener Komponenten, bei der das System die Umrisse der Komponenten speichert. Diese Methode ermöglicht es Tesseract, sowohl schwarzen Text auf weißem Hintergrund als auch umgekehrt zu erkennen \parencite{SmithR_2007_AOot}.
 
 \subsubsection{Zeilenfindung und Basislinienanpassung}
 \label{subsubsec:zeilenfindung-und-basislinienanpassung}
 
-Ein wichtiger Aspekt von Tesseract ist der Algorithmus zur Zeilenfindung. Dieser ermöglicht es, schiefe Seiten ohne vorherige Entzerrung zu erkennen, was einen Qualitätsverlust des Bildes verhindert \cite{SmithR_2007_AOot}. Nach der Zeilenerkennung passt das System die Basislinien präzise an. Diese Fähigkeit erlaubt es Tesseract, auch mit gekrümmten Basislinien umzugehen – ein häufiges Problem beim Scannen von Büchern \cite{SmithR_2007_AOot}.
+Ein wichtiger Aspekt von Tesseract ist der Algorithmus zur Zeilenfindung. Dieser ermöglicht es, schiefe Seiten ohne vorherige Entzerrung zu erkennen, was einen Qualitätsverlust des Bildes verhindert \parencite{SmithR_2007_AOot}. Nach der Zeilenerkennung passt das System die Basislinien präzise an. Diese Fähigkeit erlaubt es Tesseract, auch mit gekrümmten Basislinien umzugehen – ein häufiges Problem beim Scannen von Büchern \parencite{SmithR_2007_AOot}.
 
 \subsubsection{Zeichenerkennung und Klassifizierung}
 \label{subsubsec:zeichenerkennung-und-klassifizierung}
 
-Tesseract verwendet einen zweistufigen Klassifizierungsprozess, um sich auf die jeweilige Schriftart sowie mögliche Artefakte anzupassen \cite{SmithR_2007_AOot}:
+Tesseract verwendet einen zweistufigen Klassifizierungsprozess, um sich auf die jeweilige Schriftart sowie mögliche Artefakte anzupassen \parencite{SmithR_2007_AOot}:
 
 \begin{enumerate}
 	\item Ein schneller Vorfilter erstellt zunächst eine Liste möglicher Zeichenklassen.
@@ -59,16 +59,16 @@ Tesseract verwendet einen zweistufigen Klassifizierungsprozess, um sich auf die 
 
 Diese Methode kombiniert Effizienz und Genauigkeit. 
 
-Zusätzlich nutzt Tesseract einen adaptiven Klassifizierer. Dieser lernt während des Erkennungsvorgangs kontinuierlich dazu und passt sich so an die spezifischen Eigenschaften des aktuellen Dokuments an. Er verwendet die gleichen Grundlagen wie der Hauptklassifizierer, normalisiert die Eingabedaten jedoch anders. Diese Anpassung verbessert die Erkennung von Groß- und Kleinbuchstaben und verringert die Störungsanfälligkeit \cite{SmithR_2007_AOot}.
+Zusätzlich nutzt Tesseract einen adaptiven Klassifizierer. Dieser lernt während des Erkennungsvorgangs kontinuierlich dazu und passt sich so an die spezifischen Eigenschaften des aktuellen Dokuments an. Er verwendet die gleichen Grundlagen wie der Hauptklassifizierer, normalisiert die Eingabedaten jedoch anders. Diese Anpassung verbessert die Erkennung von Groß- und Kleinbuchstaben und verringert die Störungsanfälligkeit \parencite{SmithR_2007_AOot}.
 
 Die Kombination aus effizientem zweistufigem Prozess und anpassungsfähigem Lernen ermöglicht Tesseract eine genaue Texterkennung in verschiedenen Dokumenttypen und Schriftstilen.
 
 \section{Grundlagen des maschinellen Lernens}
 \label{sec:grundlagen-des-maschinellen-lernens}
 
-\gls{ML} ist ein Teilbereich der Informatik, der sich mit der Entwicklung von Algorithmen und Techniken zur Automatisierung komplexer Problemlösungen befasst \cite{RebalaGopinath2019AItM}. \gls{ML}-Algorithmen lernen aus Daten, ohne explizit programmiert zu werden. Der Hauptunterschied zur konventionellen Programmierung besteht darin, dass \gls{ML} selbstständig Regeln aus Beispieldaten ableitet, anstatt einem vordefinierten Regelwerk zu folgen.
+\gls{ML} ist ein Teilbereich der Informatik, der sich mit der Entwicklung von Algorithmen und Techniken zur Automatisierung komplexer Problemlösungen befasst \parencite{RebalaGopinath2019AItM}. \gls{ML}-Algorithmen lernen aus Daten, ohne explizit programmiert zu werden. Der Hauptunterschied zur konventionellen Programmierung besteht darin, dass \gls{ML} selbstständig Regeln aus Beispieldaten ableitet, anstatt einem vordefinierten Regelwerk zu folgen.
 
-Forscher*innen unterscheiden verschiedene Arten von Lernvorgängen \cite{RebalaGopinath2019AItM, jordan2015machine}:
+Forscher*innen unterscheiden verschiedene Arten von Lernvorgängen \parencite{RebalaGopinath2019AItM, jordan2015machine}:
 
 \begin{itemize}
 	\item Überwachtes Lernen (Supervised Learning):Der Algorithmus lernt anhand von gelabelten Trainingsdaten. Klassifikations- und Regressionsaufgaben sind typische Anwendungsbeispiele.
@@ -77,7 +77,7 @@ Forscher*innen unterscheiden verschiedene Arten von Lernvorgängen \cite{RebalaG
 	\item Verstärkendes Lernen (Reinforcement Learning): Der Algorithmus lernt durch Interaktion mit einer Umgebung und erhält Belohnungen für bestimmte Aktionen.
 \end{itemize}
 
-Die beeindruckenden Fortschritte im Bereich des \gls{ML} in den letzten Jahren sind auf verschiedene Faktoren zurückzuführen, darunter die Verfügbarkeit großer Datenmengen, die Zunahme der Rechenleistung und verbesserte Algorithmen für große Datensätze \cite{jordan2015machine}.
+Die beeindruckenden Fortschritte im Bereich des \gls{ML} in den letzten Jahren sind auf verschiedene Faktoren zurückzuführen, darunter die Verfügbarkeit großer Datenmengen, die Zunahme der Rechenleistung und verbesserte Algorithmen für große Datensätze \parencite{jordan2015machine}.
 
 Im Rahmen von \gls{ML} gibt es verschiedene Unterarten, welche in den folgenden Absätzen besprochen werden, einen Überblick darüber bietet die Abbildung \ref{fig:ml-hierarchy}.
 
@@ -116,7 +116,7 @@ Im Rahmen von \gls{ML} gibt es verschiedene Unterarten, welche in den folgenden 
 \subsection{Neuronale Netze}
 \label{subsec:neuronale-netze}
 
-Neuronale Netze bilden eine Klasse von \gls{ML}-Modellen, die sich von der Funktionsweise des menschlichen Gehirns inspirieren lassen \cite{RebalaGopinath2019AItM}. Sie bestehen aus miteinander verbundenen Neuronen, die in Schichten angeordnet sind:
+Neuronale Netze bilden eine Klasse von \gls{ML}-Modellen, die sich von der Funktionsweise des menschlichen Gehirns inspirieren lassen \parencite{RebalaGopinath2019AItM}. Sie bestehen aus miteinander verbundenen Neuronen, die in Schichten angeordnet sind:
 
 \begin{itemize}
 	\item Eingabeschicht (Input Layer): Nimmt die Eingabedaten auf
@@ -129,20 +129,20 @@ Die Verbindungen zwischen den Neuronen besitzen Gewichte, die sich während des 
 \subsubsection{Deep Learning}
 \label{subsec:deep-learning}
 
-Deep learning bezeichnet neuronale Netze mit vielen versteckten Schichten \cite{RebalaGopinath2019AItM}. Diese Architektur ermöglicht die Extraktion hierarchischer Merkmale aus den Daten. Die Entwicklung von Algorithmen für tiefes Lernen führte in den letzten Jahren zu großen Fortschritten in Bereichen wie Bilderkennung, Sprachverarbeitung, Robotik und \gls{OCR} \cite{jordan2015machine}.
+Deep learning bezeichnet neuronale Netze mit vielen versteckten Schichten \parencite{RebalaGopinath2019AItM}. Diese Architektur ermöglicht die Extraktion hierarchischer Merkmale aus den Daten. Die Entwicklung von Algorithmen für tiefes Lernen führte in den letzten Jahren zu großen Fortschritten in Bereichen wie Bilderkennung, Sprachverarbeitung, Robotik und \gls{OCR} \parencite{jordan2015machine}.
 
 Wichtige Konzepte im Deep Learning sind:
 
 \begin{itemize}
-	\item Backpropagation: Ein Algorithmus zum effizienten Training durch Berechnung der Gradienten \cite{RebalaGopinath2019AItM}
-	\item Regularisierung: Techniken zur Vermeidung von Overfitting \cite{jordan2015machine}
-	\item Transfer Learning: Übertragung gelernter Merkmale auf neue Aufgaben \cite{jordan2015machine}
+	\item Backpropagation: Ein Algorithmus zum effizienten Training durch Berechnung der Gradienten \parencite{RebalaGopinath2019AItM}
+	\item Regularisierung: Techniken zur Vermeidung von Overfitting \parencite{jordan2015machine}
+	\item Transfer Learning: Übertragung gelernter Merkmale auf neue Aufgaben \parencite{jordan2015machine}
 \end{itemize}
 
 \subsubsection{Convolutional Neural Networks (CNNs)}
 \label{subsubsec:cnn}
 
-\glspl{CNN} stellen eine spezielle Art von neuronalen Netzen dar, die sich besonders für die Verarbeitung von Bilddaten eignen \cite{RebalaGopinath2019AItM}. Sie nutzen Faltungsoperationen (Convolutions), um lokale Muster in den Eingabedaten zu erkennen. Im Kontext von \glspl{CNN} unterscheiden wir verschiedene gängige Ebenentypen \cite{RebalaGopinath2019AItM}:
+\glspl{CNN} stellen eine spezielle Art von neuronalen Netzen dar, die sich besonders für die Verarbeitung von Bilddaten eignen \parencite{RebalaGopinath2019AItM}. Sie nutzen Faltungsoperationen (Convolutions), um lokale Muster in den Eingabedaten zu erkennen. Im Kontext von \glspl{CNN} unterscheiden wir verschiedene gängige Ebenentypen \parencite{RebalaGopinath2019AItM}:
 
 \begin{itemize}
 	\item Convolutional Layer: Wendet Filter (Kernel) zur Merkmalserkennung an
@@ -151,38 +151,38 @@ Wichtige Konzepte im Deep Learning sind:
 	\item Fully Connected Layer: Verbindet jedes Neuron mit allen Neuronen der vorhergehenden Schicht; führt Klassifikation basierend auf extrahierten Merkmalen durch
 \end{itemize}
 
-CNNs haben sich als äußerst leistungsfähig für Aufgaben wie Objekterkennung, Gesichtserkennung und autonomes Fahren erwiesen \cite{RebalaGopinath2019AItM}. Ihre Fähigkeit, hierarchische Merkmale aus Bilddaten zu extrahieren, macht sie zu einem zentralen Werkzeug in vielen Bereichen der künstlichen Intelligenz.
+CNNs haben sich als äußerst leistungsfähig für Aufgaben wie Objekterkennung, Gesichtserkennung und autonomes Fahren erwiesen \parencite{RebalaGopinath2019AItM}. Ihre Fähigkeit, hierarchische Merkmale aus Bilddaten zu extrahieren, macht sie zu einem zentralen Werkzeug in vielen Bereichen der künstlichen Intelligenz.
 
 \section{Natural Language Processing (NLP)}
 \label{sec:nlp}
 
-\gls{NLP} beschäftigt sich mit dem Verstehen und der Interpretation menschlicher Sprache, sowohl gesprochen als auch geschrieben, mithilfe maschineller Verarbeitung \cite{RebalaGopinath2019AItM}. \gls{NLP} findet Anwendung in einer Vielzahl von Bereichen, darunter Spracherkennung, Übersetzungen, Textzusammenfassungen, Fragebeantwortung, Spracherzeugung und Suchmaschinen.
+\gls{NLP} beschäftigt sich mit dem Verstehen und der Interpretation menschlicher Sprache, sowohl gesprochen als auch geschrieben, mithilfe maschineller Verarbeitung \parencite{RebalaGopinath2019AItM}. \gls{NLP} findet Anwendung in einer Vielzahl von Bereichen, darunter Spracherkennung, Übersetzungen, Textzusammenfassungen, Fragebeantwortung, Spracherzeugung und Suchmaschinen.
 
 \subsection{Tokenisierung}
 \label{subsec:tokenisierung}
 
-Die Tokenisierung bildet einen fundamentalen Schritt in der Verarbeitung natürlicher Sprache. Hierbei wird ein Text in einzelne Einheiten, sogenannte Token, zerlegt \cite{RebalaGopinath2019AItM}. In den meisten Fällen entsprechen diese Token einzelnen Wörtern, sie können aber auch Satzzeichen oder andere bedeutungstragende Elemente umfassen \cite{RebalaGopinath2019AItM}. 
+Die Tokenisierung bildet einen fundamentalen Schritt in der Verarbeitung natürlicher Sprache. Hierbei wird ein Text in einzelne Einheiten, sogenannte Token, zerlegt \parencite{RebalaGopinath2019AItM}. In den meisten Fällen entsprechen diese Token einzelnen Wörtern, sie können aber auch Satzzeichen oder andere bedeutungstragende Elemente umfassen \parencite{RebalaGopinath2019AItM}. 
 Ein einfacher Ansatz für englische Texte besteht beispielsweise darin, den Text an Leerzeichen zu trennen.
 
 \subsection{Part-of-Speech Tagging}
 \label{subsec:pos-tagging}
 
-Im \gls{POS}-Tagging-Schritt wird jedes Wort in einem Text einer grammatikalischen Kategorie zugeordnet, wie zum Beispiel Nomen, Verb oder Adjektiv \cite{RebalaGopinath2019AItM}. Dieser Schritt ist von großer Bedeutung, da die grammatikalische Funktion eines Wortes oft entscheidend für seine Bedeutung im Kontext ist.
+Im \gls{POS}-Tagging-Schritt wird jedes Wort in einem Text einer grammatikalischen Kategorie zugeordnet, wie zum Beispiel Nomen, Verb oder Adjektiv \parencite{RebalaGopinath2019AItM}. Dieser Schritt ist von großer Bedeutung, da die grammatikalische Funktion eines Wortes oft entscheidend für seine Bedeutung im Kontext ist.
 
 \subsection{Named Entity Recognition}
 \label{subsec:ner}
 
-\gls{NER} ist eine zentrale Aufgabe im \gls{NLP}, bei der es darum geht, benannte Entitäten in einem Text zu identifizieren und zu klassifizieren \cite{nadeau2007survey}. 
+\gls{NER} ist eine zentrale Aufgabe im \gls{NLP}, bei der es darum geht, benannte Entitäten in einem Text zu identifizieren und zu klassifizieren \parencite{nadeau2007survey}. 
 Typische benannte Entitäten umfassen Eigennamen von Personen, Organisationen und Orten, aber auch Zeitangaben, Währungen und andere spezifische Bezeichnungen.
 
-\gls{NER}-Systeme müssen in der Lage sein, mehrdeutige Begriffe korrekt zu interpretieren. So kann "Tesla" je nach Kontext als Personenname, Unternehmensname oder als Einheit für magnetische Flussdichte verstanden werden \cite{RebalaGopinath2019AItM}.
+\gls{NER}-Systeme müssen in der Lage sein, mehrdeutige Begriffe korrekt zu interpretieren. So kann "Tesla" je nach Kontext als Personenname, Unternehmensname oder als Einheit für magnetische Flussdichte verstanden werden \parencite{RebalaGopinath2019AItM}.
 
 Die Entwicklung von \gls{NER}-Systemen hat verschiedene Ansätze hervorgebracht:
 
 \begin{itemize}
-	\item Regelbasierte Systeme: Frühe \gls{NER}-Systeme basierten hauptsächlich auf manuell erstellten Regeln und Wörterbüchern \cite{nadeau2007survey}.
-	\item Maschinelles Lernen: Moderne Ansätze nutzen zunehmend maschinelle Lernverfahren, insbesondere überwachtes Lernen. Dabei trainieren Forscher*innen Modelle auf großen, annotierten Texten, um Muster und Kontexte zu erkennen, die auf benannte Entitäten hindeuten \cite{nadeau2007survey}.
-	\item Hybride Ansätze: Diese kombinieren die Flexibilität des maschinellen Lernens mit domänenspezifischem Wissen \cite{nadeau2007survey}. Dieser Ansatz hat sich als besonders effektiv erwiesen und verbessert die Genauigkeit der Erkennung.
+	\item Regelbasierte Systeme: Frühe \gls{NER}-Systeme basierten hauptsächlich auf manuell erstellten Regeln und Wörterbüchern \parencite{nadeau2007survey}.
+	\item Maschinelles Lernen: Moderne Ansätze nutzen zunehmend maschinelle Lernverfahren, insbesondere überwachtes Lernen. Dabei trainieren Forscher*innen Modelle auf großen, annotierten Texten, um Muster und Kontexte zu erkennen, die auf benannte Entitäten hindeuten \parencite{nadeau2007survey}.
+	\item Hybride Ansätze: Diese kombinieren die Flexibilität des maschinellen Lernens mit domänenspezifischem Wissen \parencite{nadeau2007survey}. Dieser Ansatz hat sich als besonders effektiv erwiesen und verbessert die Genauigkeit der Erkennung.
 \end{itemize}
 
 \subsection{Transformer-Architektur}
@@ -190,7 +190,7 @@ Die Entwicklung von \gls{NER}-Systemen hat verschiedene Ansätze hervorgebracht:
 
 Die Transformer-Architektur, erstmals von \textcite{VaswaniAshish2023AIAY} vorgestellt, revolutionierte das Feld des maschinellen Lernens für natürliche Sprache. Im Gegensatz zu früheren rekurrenten oder faltungsbasierten Modellen basiert der Transformer vollständig auf Aufmerksamkeitsmechanismen (Attention), was eine effizientere Verarbeitung langer Sequenzen ermöglicht.
 
-Kernelemente der Transformer-Architektur umfassen \cite{VaswaniAshish2023AIAY}:
+Kernelemente der Transformer-Architektur umfassen \parencite{VaswaniAshish2023AIAY}:
 
 \begin{itemize}
 	\item Multi-Head Attention: Ermöglicht dem Modell, verschiedene Aspekte der Eingabe parallel zu berücksichtigen.
@@ -199,43 +199,43 @@ Kernelemente der Transformer-Architektur umfassen \cite{VaswaniAshish2023AIAY}:
 	\item Residuale Verbindungen und Layer-Normalisierung: Verbessern den Informationsfluss und stabilisieren das Training.
 \end{itemize}
 
-Die Transformer-Architektur hat sich aufgrund ihrer Skalierbarkeit und Effizienz als Grundlage für viele moderne Sprachmodelle etabliert \cite{VaswaniAshish2023AIAY}.
+Die Transformer-Architektur hat sich aufgrund ihrer Skalierbarkeit und Effizienz als Grundlage für viele moderne Sprachmodelle etabliert \parencite{VaswaniAshish2023AIAY}.
 
 \subsection{BERT und verwandte Modelle}
 \label{subsec:bert-und-verwandte-modelle}
 
-Die von \textcite{DevlinJacob2019BPoD} vorgestellte \gls{BERT}-Technologie markierte einen weiteren bedeutenden Fortschritt in der Anwendung von Transformer-Architekturen. BERT verwendet eine bidirektionale Vortrainingsmethode, die es dem Modell ermöglicht, Kontext aus beiden Richtungen zu berücksichtigen \cite{DevlinJacob2019BPoD}.
+Die von \textcite{DevlinJacob2019BPoD} vorgestellte \gls{BERT}-Technologie markierte einen weiteren bedeutenden Fortschritt in der Anwendung von Transformer-Architekturen. BERT verwendet eine bidirektionale Vortrainingsmethode, die es dem Modell ermöglicht, Kontext aus beiden Richtungen zu berücksichtigen \parencite{DevlinJacob2019BPoD}.
 
-Wichtige Aspekte dieses Trainingsprozesses sind \cite{DevlinJacob2019BPoD}:
+Wichtige Aspekte dieses Trainingsprozesses sind \parencite{DevlinJacob2019BPoD}:
 
 \begin{itemize}
 	\item \gls{MLM}: Trainiert das Modell, maskierte Wörter in einem Satz vorherzusagen.
 	\item \gls{NSP}: Trainiert das Modell, die Beziehung zwischen Satzpaaren zu verstehen.
 \end{itemize}
 
-\gls{BERT} \cite{DevlinJacob2019BPoD} sowie Varianten wie ALBERT \cite{LanZhenzhong2019AALB} oder RoBERTa \cite{liu2019robertarobustlyoptimizedbert} haben zu signifikanten Verbesserungen in vielen Aufgaben der natürlichen Sprachverarbeitung geführt.
+\gls{BERT} \parencite{DevlinJacob2019BPoD} sowie Varianten wie ALBERT \parencite{LanZhenzhong2019AALB} oder RoBERTa \parencite{liu2019robertarobustlyoptimizedbert} haben zu signifikanten Verbesserungen in vielen Aufgaben der natürlichen Sprachverarbeitung geführt.
 
 \subsection{Large Language Models (LLMs)}
 \label{subsec:llms}
 
-\glspl{LLM} stellen eine bedeutende Weiterentwicklung in der Verarbeitung natürlicher Sprache dar. Diese Transformer-basierten Modelle zeichnen sich durch eine enorme Anzahl von Parametern aus und werden auf sehr großen Textkorpora trainiert \cite{VaswaniAshish2023AIAY}.
+\glspl{LLM} stellen eine bedeutende Weiterentwicklung in der Verarbeitung natürlicher Sprache dar. Diese Transformer-basierten Modelle zeichnen sich durch eine enorme Anzahl von Parametern aus und werden auf sehr großen Textkorpora trainiert \parencite{VaswaniAshish2023AIAY}.
 
 Bemerkenswerte Fähigkeiten von \glspl{LLM} sind:
 
 \begin{itemize}
-	\item Skalierung: Die Leistung verbessert sich oft mit zunehmender Modellgröße und Datenmenge \cite{TouvronHugo2023LOaE}.
-	\item Emergente Fähigkeiten: Unerwartete Fähigkeiten, die erst ab einer bestimmten Modellgröße auftreten, wie beispielsweise das Erkennen von Mustern in Daten, verbessertes Kontextverständnis, komplexes Argumentieren und kreatives Schreiben \cite{BrownTomB2020LMaF}.
-	\item Few-Shot Learning: Die Fähigkeit, neue Aufgaben mit wenigen oder keinen spezifischen Trainingsbeispielen zu lernen \cite{BrownTomB2020LMaF}.
-	\item Transfer Learning: \glspl{LLM} können das auf großen allgemeinen Textkorpora erlernte Wissen auf spezifische Aufgaben übertragen \cite{DevlinJacob2019BPoD}.
-	\item Multimodalität: Neuere \glspl{LLM} integrieren zunehmend Fähigkeiten zur Verarbeitung verschiedener Modalitäten wie Text und Bilder \cite{LiJunnan2023BBLP}.
+	\item Skalierung: Die Leistung verbessert sich oft mit zunehmender Modellgröße und Datenmenge \parencite{TouvronHugo2023LOaE}.
+	\item Emergente Fähigkeiten: Unerwartete Fähigkeiten, die erst ab einer bestimmten Modellgröße auftreten, wie beispielsweise das Erkennen von Mustern in Daten, verbessertes Kontextverständnis, komplexes Argumentieren und kreatives Schreiben \parencite{BrownTomB2020LMaF}.
+	\item Few-Shot Learning: Die Fähigkeit, neue Aufgaben mit wenigen oder keinen spezifischen Trainingsbeispielen zu lernen \parencite{BrownTomB2020LMaF}.
+	\item Transfer Learning: \glspl{LLM} können das auf großen allgemeinen Textkorpora erlernte Wissen auf spezifische Aufgaben übertragen \parencite{DevlinJacob2019BPoD}.
+	\item Multimodalität: Neuere \glspl{LLM} integrieren zunehmend Fähigkeiten zur Verarbeitung verschiedener Modalitäten wie Text und Bilder \parencite{LiJunnan2023BBLP}.
 \end{itemize}
 
 \subsubsection{LLaMA}
 \label{subsubsec:LLaMA}
 
-Für die Aufgabenstellung besonders interessant sind die von \textcite{TouvronHugo2023LOaE} erstmals vorgestellten Modelle der LLaMA-Reihe. Diese sind in Größen von 7-65 Milliarden Parametern verfügbar und wurden auf Basis öffentlicher Daten trainiert \cite{TouvronHugo2023LOaE}. Die Forscher*innen zeigten, dass es möglich ist, leistungsfähige Sprachmodelle mit öffentlichen Daten zu trainieren, was die Forschung und Entwicklung in diesem Bereich demokratisiert. Die Autor*innen betonen, dass LLaMA auf einer Vielzahl von Benchmarks, einschließlich Aufgaben zum Schlussfolgern, Lesen und mathematischem Denken, wettbewerbsfähige oder überlegene Ergebnisse im Vergleich zu Modellen ähnlicher Größe erzielt \cite{TouvronHugo2023LOaE}.
+Für die Aufgabenstellung besonders interessant sind die von \textcite{TouvronHugo2023LOaE} erstmals vorgestellten Modelle der LLaMA-Reihe. Diese sind in Größen von 7-65 Milliarden Parametern verfügbar und wurden auf Basis öffentlicher Daten trainiert \parencite{TouvronHugo2023LOaE}. Die Forscher*innen zeigten, dass es möglich ist, leistungsfähige Sprachmodelle mit öffentlichen Daten zu trainieren, was die Forschung und Entwicklung in diesem Bereich demokratisiert. Die Autor*innen betonen, dass LLaMA auf einer Vielzahl von Benchmarks, einschließlich Aufgaben zum Schlussfolgern, Lesen und mathematischem Denken, wettbewerbsfähige oder überlegene Ergebnisse im Vergleich zu Modellen ähnlicher Größe erzielt \parencite{TouvronHugo2023LOaE}.
 
-Die neueste Version, LLaMA 3, erweitert diese Fähigkeiten deutlich. Sie bietet Modelle mit bis zu 405 Milliarden Parametern, die auf etwa 15 Billionen mehrsprachigen Tokens trainiert wurden \cite{HartshornAnthony2024TL3H}. Besonders die Mehrsprachigkeit sowie die deutlich verbesserte Leistung, die laut den Autor*innen mit führenden Modellen wie GPT-4 vergleichbar ist, kombiniert mit der Tatsache, dass LLaMA 3, einschließlich des 405B-Modells, von Meta öffentlich freigegeben wurde, machen das System zur Umsetzung von Techniken wie \gls{LMDX} (siehe Abschnitt \ref{subsec:language-model-basierte-document-information-extraction}) besonders interessant.
+Die neueste Version, LLaMA 3, erweitert diese Fähigkeiten deutlich. Sie bietet Modelle mit bis zu 405 Milliarden Parametern, die auf etwa 15 Billionen mehrsprachigen Tokens trainiert wurden \parencite{HartshornAnthony2024TL3H}. Besonders die Mehrsprachigkeit sowie die deutlich verbesserte Leistung, die laut den Autor*innen mit führenden Modellen wie GPT-4 vergleichbar ist, kombiniert mit der Tatsache, dass LLaMA 3, einschließlich des 405B-Modells, von Meta öffentlich freigegeben wurde, machen das System zur Umsetzung von Techniken wie \gls{LMDX} (siehe Abschnitt \ref{subsec:language-model-basierte-document-information-extraction}) besonders interessant.
 
 \subsection{Herausforderungen und Einschränkungen}
 \label{subsec:llm-challenges}
@@ -247,7 +247,7 @@ Trotz ihrer beeindruckenden Fähigkeiten stehen \glspl{LLM} vor mehreren Herausf
 	\item Bias und Fairness: \glspl{LLM} können voreingenommene oder unfaire Ausgaben produzieren, die gesellschaftliche Vorurteile widerspiegeln. \textcite{BrownTomB2020LMaF} diskutieren dieses Problem und betonen die Notwendigkeit, es bei der Entwicklung und Anwendung von \glspl{LLM} zu berücksichtigen.
 	\item Halluzinationen: \glspl{LLM} können plausibel klingende, aber falsche Informationen generieren. \textcite{JiangZhengbao2020HCWK} untersuchen dieses Phänomen und betonen die Schwierigkeit, den wahren Wissensstand eines \gls{LLM} zu bestimmen.
 	\item Interpretierbarkeit: Es ist oft schwierig zu verstehen, wie \glspl{LLM} zu bestimmten Ausgaben gelangen. \textcite{DevlinJacob2019BPoD} erwähnen diese Herausforderung im Kontext von BERT, was auch für größere \glspl{LLM} relevant bleibt.
-	\item Datenschutz und ethische Bedenken: Die Verwendung großer Mengen an Trainingsdaten wirft Fragen zum Datenschutz und zur ethischen Nutzung von Informationen auf \cite{TouvronHugo2023LOaE}.
+	\item Datenschutz und ethische Bedenken: Die Verwendung großer Mengen an Trainingsdaten wirft Fragen zum Datenschutz und zur ethischen Nutzung von Informationen auf \parencite{TouvronHugo2023LOaE}.
 \end{itemize}
 
 \section{Evaluation und Metriken}
@@ -271,7 +271,7 @@ In der Evaluation von Machine-Learning-Modellen, insbesondere bei Klassifikation
 		\cellcolor{green!20}\large\begin{tabular}{@{}c@{}}True Negatives\end{tabular} \\
 		\hline
 	\end{tabular}
-	\caption{Konfusionsmatrix zur Darstellung der Klassifikationsergebnisse eines Machine-Learning-Modells; richtige Ergebnisse sind grün markiert, falsche Ergebnisse sind rot markiert \cite{PowersDavidM.W2020Efpr}}
+	\caption{Konfusionsmatrix zur Darstellung der Klassifikationsergebnisse eines Machine-Learning-Modells; richtige Ergebnisse sind grün markiert, falsche Ergebnisse sind rot markiert \parencite{PowersDavidM.W2020Efpr}}
 	\label{fig:konfusionsmatrix}
 \end{table}
 
@@ -308,7 +308,7 @@ Laut \textcite{BrownTomB2020LMaF} kann beispielsweise ein \gls{LLM}, das auf ein
 \subsection{Few-Shot Learning}
 \label{subsec:few-shot-learning}
 
-Few-Shot Learning bezeichnet die Fähigkeit eines Modells, neue Aufgaben mit nur einer geringen Anzahl von Beispielen zu lösen. \textcite{BrownTomB2020LMaF} zeigen, dass \glspl{LLM} beispielsweise in der Lage sind, mit wenigen Beispielen (typischerweise 10 bis 100) neue Aufgaben zu erlernen, ohne eine Neuanpassung oder Feinjustierung des Modells zu benötigen. Dies bedeutet, dass das Modell die Fähigkeit besitzt, aus einer begrenzten Anzahl von Beispielen zu generalisieren und die Aufgabe zu verstehen, ohne dass seine grundlegenden Parameter verändert werden müssen \cite{BrownTomB2020LMaF}.
+Few-Shot Learning bezeichnet die Fähigkeit eines Modells, neue Aufgaben mit nur einer geringen Anzahl von Beispielen zu lösen. \textcite{BrownTomB2020LMaF} zeigen, dass \glspl{LLM} beispielsweise in der Lage sind, mit wenigen Beispielen (typischerweise 10 bis 100) neue Aufgaben zu erlernen, ohne eine Neuanpassung oder Feinjustierung des Modells zu benötigen. Dies bedeutet, dass das Modell die Fähigkeit besitzt, aus einer begrenzten Anzahl von Beispielen zu generalisieren und die Aufgabe zu verstehen, ohne dass seine grundlegenden Parameter verändert werden müssen \parencite{BrownTomB2020LMaF}.
 
 \subsection{Zero-Shot Learning}
 \label{subsec:zero-shot-learning}
