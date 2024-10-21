@@ -4,17 +4,17 @@
 \section{Motivation und Hintergrund}
 \label{sec:motivation-und-hintergrund}
 
-\subsection{Allgemeine Motivation}
-\label{subsec:allgemeine-motivation}
+Automatisierte Dokumentenverarbeitung gewinnt in der Gewinnung strukturierter Daten zunehmend an Bedeutung. Unternehmen digitalisieren ihre Geschäftsprozesse und setzen verstärkt auf Dokumentenverarbeitungssysteme. Diese Systeme sparen Zeit und Kosten, indem sie den Bedarf an manueller Dateneingabe reduzieren und das Risiko menschlicher Fehler minimieren \parencite{PerotVincent2024LLMD}.
 
-Die automatisierte Dokumentenverarbeitung zur Gewinnung strukturierter Daten gewinnt zunehmend an Bedeutung. Unternehmen digitalisieren ihre Geschäftsprozesse und nutzen Dokumentenverarbeitungssysteme, um Zeit und Kosten zu sparen. Diese Systeme reduzieren den Bedarf an manueller Dateneingabe und minimieren so das Risiko menschlicher Fehler \parencite{PerotVincent2024LLMD}.
+Die wirtschaftliche Relevanz dieser Technologie zeigt sich in der Reduzierung von Betriebskosten, der Beschleunigung von Geschäftsprozessen und der Verbesserung der Entscheidungsfindung durch zeitnahen Zugriff auf strukturierte Daten. Technologische Fortschritte in \glspl{OCR}, \glspl{NLP} und maschinellem Lernen erweitern die Möglichkeiten der automatisierten Dokumentenverarbeitung erheblich. Insbesondere \glspl{LLM} eröffnen neue Perspektiven \parencite{XuYiheng2020LPoT, TouvronHugo2023LOaE}.
 
-Die Industrie wendet dieses Thema praktisch an. Die Firma Multidata, welche selbst ein Hersteller eines Dokumentenverarbeitungssystems, stellt die Aufgabenstellung für diese Bachelorarbeit und unterstreicht damit die Relevanz des Themas.
+Trotz dieser Fortschritte bestehen weiterhin Herausforderungen wie die Verarbeitung vielfältiger Dokumententypen, die Bewältigung von Mehrsprachigkeit und kulturellen Unterschieden in Dokumentenlayouts sowie die Gewährleistung von Datenschutz und Sicherheit.
 
-\subsection{Ausgangslage}
-\label{subsec:ausgangslage}
+Die Industrie wendet diese Technologien bereits praktisch an. Die Firma Multidata, selbst Hersteller eines Dokumentenverarbeitungssystems, stellt die Aufgabenstellung für diese Bachelorarbeit und unterstreicht damit die praktische Relevanz des Themas.
+Das Unternehmen nutzt aktuell ein System, das auf manuell definierten Vorlagen für die Verarbeitung gleichartiger Dokumente basiert. Dieses System weist jedoch Nachteile auf. Es erfordert einen hohen manuellen Aufwand, zeigt eine geringe Anpassungsfähigkeit an sich ändernde Dokumentenlayouts und eignet sich nur eingeschränkt für bestimmte Dokumententypen.
+Aufgrund dieser Limitationen strebt Multidata die Entwicklung eines Systems mit höherem Automatisierungsgrad an, das das bestehende System ersetzen soll. Abschnitt \ref{sec:analyse-des-akutell-eingesetzten-systems} erläutert die detaillierte Funktionsweise des aktuellen Systems.
 
-Multidata nutzt aktuell ein Zonal-\gls{OCR}-basiertes\ref{subsubsec:zonal-ocr-parser} System. Benutzer*innen definieren manuell Vorlagen für die Verarbeitung gleichartiger Dokumente. Dieses System erfordert einen hohen manuellen Aufwand. Ein System mit höherem Automatisierungsgrad soll es ersetzen. Kapitel \ref{sec:analyse-des-akutell-eingesetzten-systems} erläutert die Funktionsweise des aktuellen Systems detailliert.
+Diese Bachelorarbeit verbindet akademische Forschung mit industrieller Anwendung. Sie zielt darauf ab, einen umfassenden Überblick über die aktuell im kommerziellen und wissenschaftlichen Umfeld genutzten Techniken sowie deren Leistungsfähigkeit zu bieten.
 
 \section{Problemstellung}
 \label{sec:problemstellung}
@@ -25,7 +25,16 @@ Das System muss zunächst selbstständig die Art des Dokuments bestimmen. Eine d
 
 Anschließend extrahiert das System die für die Kategorie vorgesehenen Daten. Benutzer*innen definieren die zu extrahierenden Informationen und deren Datentyp. Das System überführt die extrahierten Daten in eine strukturierte Form zur automatisierten Weiterverarbeitung.
 
-Da insbesondere im Umgang mit sensiblen Dokumenten der Datenschutz und die Sicherheit sehr wichtig sind, besteht die Notwendigkeit, das Dokumentenverarbeitungssystem lokal und ohne Übermittlung von Daten an externe Dienste zu betreiben \parencite{HuangYupan2022LPfD}. Zusätzlich soll das System plattformunabhängig sein und sowohl auf Windows- als auch auf Linux-Betriebssystemen lauffähig sein, um die Deploymentmöglichkeiten für die Kunden der Firma Multidata zu verbessern.
+Da insbesondere im Umgang mit sensiblen Dokumenten der Datenschutz und die Sicherheit sehr wichtig sind, besteht die Notwendigkeit, das Dokumentenverarbeitungssystem lokal und ohne Übermittlung von Daten an externe Dienste zu betreiben. Zusätzlich soll das System plattformunabhängig sein und sowohl auf Windows- als auch auf Linux-Betriebssystemen lauffähig sein, um die Deploymentmöglichkeiten für die Kunden der Firma Multidata zu verbessern.
+
+\section{Forschungsfrage}
+\label{sec:forschungsfrage}
+Diese Bachelorarbeit untersucht folgende zentrale Forschungsfrage:
+Welche Methoden der automatisierten Dokumentenverarbeitung eignen sich am besten für ein flexibles, lokal betreibbares System zur Dokumentenkategorisierung und Datenextraktion, das sowohl hohe Genauigkeit als auch effiziente Laufzeit bietet?
+
+Um diese Frage zu beantworten, ergeben sich mehrere  Teilaspekte. Zunächst gilt es, aktuelle Ansätze aus Forschung und kommerziellen Anwendungen zu untersuchen. Die Arbeit bewertet ihre Eignung für die beschriebenen Anforderungen und vergleicht ihre Genauigkeit und Laufzeit. Dabei berücksichtigt sie auch die Auswirkungen möglicher Vorverarbeitungsschritte auf die Leistung der verschiedenen Methoden.
+
+Die Beantwortung dieser Fragen soll zu einem umfassenden Verständnis der Leistungsfähigkeit und Einsatzmöglichkeiten moderner Dokumentenverarbeitungssysteme führen und praxisrelevante Erkenntnisse für die Weiterentwicklung solcher Systeme liefern. Die Ergebnisse dieser Arbeit sollen Entwickler*innen dabei unterstützen, effizientere und genauere Dokumentenverarbeitungssysteme zu gestalten.
 
 \section{Zielsetzung und Abgrenzung des Themas}
 \label{sec:zielsetzung-und-abgrenzung}
@@ -42,3 +51,5 @@ Die konkrete Umsetzung im Rahmen eines zur Veröffentlichung fertigen Produktes 
 \label{sec:methodisches-vorgehen}
 
 Zuerst werden verschiedene Ansätze aus wissenschaftlichen Quellen sowie existierende Software-Bibliotheken und kommerzielle Produkte recherchiert und auf Erfüllung der definierten Anforderungen überprüft. Ansätze, die die Kriterien erfüllen, werden anschließend umgesetzt. Es werden verschiedene Tests zur Bestimmung von Genauigkeit und empirischer Laufzeit durchgeführt. Dazu werden sowohl öffentlich verfügbare Datensätze als auch von Multidata zur Verfügung gestellte Datensätze genutzt. Die Ergebnisse werden anschließend grafisch aufbereitet und verglichen. Abschließend werden verschiedene Verbesserungsansätze, wie unterschiedliche Methoden zum Vorbereiten der Dokumente, implementiert und ihre Auswirkungen gemessen und dokumentiert.
+
+Unterstützend zur Verbesserung der Formulierung, sowie zur Rechtschreib- und Grammatikprüfung wird das \gls{LLM} Claud 3.5 Sonnet \parencite{anthropic_claude} verwendet.
