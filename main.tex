@@ -25,14 +25,14 @@
 \usepackage{multirow}
 \usepackage{adjustbox}
 
-\usepackage[acronym,toc]{glossaries}
-\input{acronyms}
-\makeglossaries
-
 \DocumentMetadata{lang=de}
 \graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
 \logofile{logo}           % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
 \bibliography{references} % Biblatex-Literaturdatei (references.bib)
+
+\usepackage[acronym, toc]{glossaries}
+\makeglossaries
+\input{acronyms}
 
 %%%-----------------------------------------------------------------------------
 \begin{document}
