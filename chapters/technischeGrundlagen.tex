@@ -11,9 +11,9 @@ Dieses Kapitel bietet einen Überblick über die wichtigsten technischen Konzept
 
 \gls{OCR} spielt eine Schlüsselrolle bei der Verarbeitung visueller Dokumente. 
 Sie wandelt Bilder von gedrucktem oder handgeschriebenem Text in maschinenlesbaren Text um \parencite{MoriS.1992HroO}.
-Entgegen der wörtlichen Bedeutung von \gls{OCR} arbeiten viele gängige Systeme tatsächlich auf Zeichenblöcke oder ganze Wörter anstatt einzelner Zeichen \parencite{BorovikovEugene2014Asom}.
-Es existiert eine Vielzahl von \gls{OCR}-Methoden, von denen einige Segmentierung nutzen, also die Zuteilung jedes Pixels zu einer Kategorie, während andere darauf verzichten \parencite{BorovikovEugene2014Asom}. 
-Die meisten modernen \gls{OCR}-Systeme bestehen typischerweise aus zwei essenziellen Komponenten \parencite{BorovikovEugene2014Asom}:
+Entgegen der wörtlichen Bedeutung von \acrfull{OCR} funktionieren viele gängige Systeme tatsächlich auf der Ebene von Zeichenblöcken oder ganzen Wörtern anstatt einzelner Zeichen \parencite{BorovikovEugene2014Asom}.
+Die Vielfalt der \gls{OCR}-Methoden zeigt sich in unterschiedlichen Ansätzen: Einige nutzen Segmentierung, bei der jedes Pixel einer Kategorie zugeordnet wird, während andere Methoden ohne diesen Schritt auskommen \parencite{BorovikovEugene2014Asom}. 
+Die meisten modernen \gls{OCR}-Systeme bestehen aus zwei essenziellen Komponenten \parencite{BorovikovEugene2014Asom}:
 
 \begin{enumerate}
 	\item Feature Extractor: Dieser extrahiert die charakteristischen Merkmale (Deskriptoren) eines Elements aus einem Bild. Diese abgeleiteten Merkmale dienen als Eingabe für den Classifier.
@@ -30,15 +30,16 @@ Diese grundlegende Struktur bildet die Basis für verschiedene klassische und mo
 Dabei ist zu beachten, dass es auch leichte Abweichungen und hybride Varianten dieser Techniken gibt \parencite{BorovikovEugene2014Asom}. Viele moderne \gls{OCR}-Systeme verwenden mathematische Funktionen, die darauf abzielen, eine Metrik der Abweichung von einer Vorlage zu minimieren. Beispiele dafür sind \parencite{BorovikovEugene2014Asom}:
 
 \begin{itemize}
-	\item Diskriminanzfunktionen: Diese verwenden Hyperebenen im mehrdimensionalen Merkmalsraum zur Trennung von Zeichenklassen.
-	\item Bayes-Klassifikatoren: Sie minimieren Fehlklassifikationen mittels Wahrscheinlichkeitstheorie.
-	\item Künstliche Neuronale Netze (KNN): Diese lernen komplexe Klassifikationsabbildungen durch Fehlerrückführung und Optimierungstechniken.
+	\item Diskriminanzfunktionen-basierte Klassifikator: Diese verwenden Hyperebenen im mehrdimensionalen Merkmalsraum, um die
+	Merkmalsbeschreibung von Zeichen aus verschiedenen semantischen Klassen zu trennen. eine Hyperebene ist dabei die Verallgemeinerung einer Ebene in höherdimensionalen Räumen. Solche Klassifikatoren zielen auf die Verringerung des	mittleren quadratischen Klassifikationsfehler ab. Dadurch soll die optimale Trennung zwischen den Klassen zu gefunden werden, indem die Grenze, also die Hyperebene so gesetzt wird, dass möglichst wenige Fehlklassifizierungen auftreten.
+	\item Bayes-Klassifikator: Diese versuchen, eine Verlustfunktion zu minimieren, die mit der Fehlklassifizierung von Zeichen verbunden ist. Das verwendete Verfahren basiert dabei auf dem Bayes-Theorem, das die Berechnung von bedingten Wahrscheinlichkeiten ermöglicht. Bayes-Klassifikatoren berücksichtigen also die Wahrscheinlichkeit, dass ein Zeichen zu einer bestimmten Klasse gehört, basierend auf seinen Merkmalen und dem vorhandenen Vorwissen über die Klassenverteilungen. Ziel ist es, die Entscheidungsregel so zu wählen, dass der erwartete Verlust durch Fehlklassifikationen minimiert wird.
+	\item \glspl{ANN}: Diese verwenden Techniken der Fehlerrückführung (Backpropagation), um komplexe, nicht-triviale Abbildungen zur Zeichenklassifikation zu erlernen. Dabei wird der Fehler, den das Netzwerk bei der Klassifikation macht, rückwärts durch das Netz propagiert, um die Gewichte der Verbindungen zwischen den Neuronen anzupassen. Zusätzlich nutzen KNN mathematische Optimierungsverfahren, um mögliche Klassifikationsfehler zu minimieren. Dies ermöglicht es ihnen, auch in schwierigen Fällen gute Klassifikationsleistungen zu erzielen und sich an neue Daten anzupassen.
 \end{itemize}
 
 \subsection{Tesseract OCR}
 \label{subsec:tesseract-ocr}
 
-Das für die im Rahmen dieser Bachelorarbeit implementierten Prototypen verwendete \gls{OCR}-System heißt Tesseract \gls{OCR}. Hewlett Packard entwickelte dieses \gls{OCR}-System ursprünglich, und seit 2005 ist es als Open-Source-Software verfügbar \parencite{SmithR_2007_AOot}. Tesseract basiert auf \gls{LSTM} neuronalen Netzen und unterstützt über 100 Sprachen sowie mehr als 35 Schriftsysteme \parencite{tesseract_ocr_user_manual}. 
+Das für die im Rahmen dieser Bachelorarbeit implementierten Prototypen verwendete \gls{OCR}-System heißt Tesseract \gls{OCR}. Hewlett Packard entwickelte dieses \gls{OCR}-System ursprünglich, und seit 2005 ist es als Open-Source-Software verfügbar \parencite{SmithR_2007_AOot}. Tesseract basiert auf neuronalen Netzen und unterstützt über 100 Sprachen sowie mehr als 35 Schriftsysteme \parencite{tesseract_ocr_user_manual}. 
 
 \subsubsection{Architektur und Funktionsweise}
 \label{subsubsec:architektur-und-funktionsweise}
@@ -60,8 +61,7 @@ Tesseract verwendet einen zweistufigen Klassifizierungsprozess, um sich auf die 
 	\item Für diese Auswahl führt das System anschließend eine genauere Ähnlichkeitsberechnung durch.
 \end{enumerate}
 
-Diese Methode kombiniert Effizienz und Genauigkeit. 
-
+Diese Methode kombiniert Effizienz und Genauigkeit.
 Zusätzlich nutzt Tesseract einen adaptiven Klassifizierer. Dieser lernt während des Erkennungsvorgangs kontinuierlich dazu und passt sich so an die spezifischen Eigenschaften des aktuellen Dokuments an. Er verwendet die gleichen Grundlagen wie der Hauptklassifizierer, normalisiert die Eingabedaten jedoch anders. Diese Anpassung verbessert die Erkennung von Groß- und Kleinbuchstaben und verringert die Störungsanfälligkeit \parencite{SmithR_2007_AOot}.
 
 Die Kombination aus effizientem zweistufigem Prozess und anpassungsfähigem Lernen ermöglicht Tesseract eine genaue Texterkennung in verschiedenen Dokumenttypen und Schriftstilen.
@@ -70,21 +70,20 @@ Die Kombination aus effizientem zweistufigem Prozess und anpassungsfähigem Lern
 \label{sec:grundlagen-des-maschinellen-lernens}
 
 \subsection{Grundlegende Begriffe}
-\label{subsec:neuronale-netze}
+\label{subsec:grundlegende-begriffe}
 
 \gls{ML} ist ein Teilbereich der Informatik, der sich mit der Entwicklung von Algorithmen und Techniken zur Automatisierung komplexer Problemlösungen befasst \parencite{RebalaGopinath2019AItM}. \gls{ML}-Algorithmen lernen aus Daten, ohne explizit programmiert zu werden. Der Hauptunterschied zur konventionellen Programmierung besteht darin, dass \gls{ML} selbstständig Regeln aus Beispieldaten ableitet, anstatt einem vordefinierten Regelwerk zu folgen.
-
+Ein wichtiger Begriff in dem Bereich ist der der beschrifteten Daten (labeled data). Dabei sind Daten gemeint, für die das richtige Klassifizierungsergebnis bereits bekannt ist, wodurch diese sowohl zum Training als auch zum Bestimmen der Genauigkeit von Klassifizierungsmodellen eingesetzt werden können.
 Forscher*innen unterscheiden verschiedene Arten von Lernvorgängen \parencite{RebalaGopinath2019AItM, jordan2015machine}:
 
 \begin{itemize}
-	\item Überwachtes Lernen (Supervised Learning):Der Algorithmus lernt anhand von gelabelten Trainingsdaten. Klassifikations- und Regressionsaufgaben sind typische Anwendungsbeispiele.
-	\item Unüberwachtes Lernen (Unsupervised Learning): Der Algorithmus entdeckt Muster in ungelabelten Daten; wie beispielsweise beim Clustering.
-	\item Semi-überwachtes Lernen (Semi-supervised Learning): EDieses Verfahren kombiniert gelabelte und ungelabelte Daten. Es findet häufig Anwendung bei einem Mangel an gelabelten Daten.
+	\item Überwachtes Lernen (Supervised Learning): Der Algorithmus lernt anhand von  etikettierten Trainingsdaten. Klassifikations- und Regressionsaufgaben sind typische Anwendungsbeispiele.
+	\item Unüberwachtes Lernen (Unsupervised Learning): Der Algorithmus entdeckt Muster in nicht beschrifteten Daten; wie beispielsweise beim Clustering.
+	\item Semi-überwachtes Lernen (Semi-supervised Learning): Dieses Verfahren kombiniert beschriftete und unbeschriftete Daten. Es findet häufig Anwendung bei einem Mangel an beschrifteten Daten.
 	\item Verstärkendes Lernen (Reinforcement Learning): Der Algorithmus lernt durch Interaktion mit einer Umgebung und erhält Belohnungen für bestimmte Aktionen.
 \end{itemize}
 
 Die beeindruckenden Fortschritte im Bereich des \gls{ML} in den letzten Jahren sind auf verschiedene Faktoren zurückzuführen, darunter die Verfügbarkeit großer Datenmengen, die Zunahme der Rechenleistung und verbesserte Algorithmen für große Datensätze \parencite{jordan2015machine}.
-
 Im Rahmen von \gls{ML} gibt es verschiedene Unterarten, welche in den folgenden Absätzen besprochen werden, einen Überblick darüber bietet die Abbildung \ref{fig:ml-hierarchy}.
 
 \begin{figure}[ht]
@@ -135,15 +134,7 @@ Die Verbindungen zwischen den Neuronen besitzen Gewichte, die sich während des 
 \subsubsection{Deep Learning}
 \label{subsec:deep-learning}
 
-Deep learning bezeichnet neuronale Netze mit vielen versteckten Schichten \parencite{RebalaGopinath2019AItM}. Diese Architektur ermöglicht die Extraktion hierarchischer Merkmale aus den Daten. Die Entwicklung von Algorithmen für tiefes Lernen führte in den letzten Jahren zu großen Fortschritten in Bereichen wie Bilderkennung, Sprachverarbeitung, Robotik und \gls{OCR} \parencite{jordan2015machine}.
-
-Wichtige Konzepte im Deep Learning sind:
-
-\begin{itemize}
-	\item Backpropagation: Ein Algorithmus zum effizienten Training durch Berechnung der Gradienten \parencite{RebalaGopinath2019AItM}
-	\item Regularisierung: Techniken zur Vermeidung von Overfitting \parencite{jordan2015machine}
-	\item Transfer Learning: Übertragung gelernter Merkmale auf neue Aufgaben \parencite{jordan2015machine}
-\end{itemize}
+\gls{DL} erzielen große Erfolge in Bereichen wie Spracherkennung, Bildverarbeitung, Sprach-Übersietzung und vielen mehr \parencite{RebalaGopinath2019AItM}. Wie von \textcite{RebalaGopinath2019AItM} beschrieben bestehen Deep Neural Networks dabei aus einer großen Zahl von Neuronen, welche in vielen Schichten angeordnet sind. Die Anordnung dieser Neuronen und Schichten muss dabei nicht zwingend domänenspezifisch sein. \gls{DL}-Systeme verwenden gradientenbasierte Optimirungsalgorithem um die Parameter dieses Netzes basierend auf den Fehlern in seinem Outputs anzupassen \parencite{jordan2015machine}. Duch moderne, parallele Datenverarbeitungsarchitekturen, wie \glspl{GPU} ist es möglich \gls{DL}-Systeme mit Milliarden Parametern zu bauen und anhand von sehr großen Datenmengen zu trainieren, die oft im Internet verfügbar sind \parencite{jordan2015machine}.
 
 \subsubsection{Convolutional Neural Networks (CNNs)}
 \label{subsubsec:cnn}
@@ -154,7 +145,7 @@ Wichtige Konzepte im Deep Learning sind:
 	\item Convolutional Layer: Wendet Filter (Kernel) zur Merkmalserkennung an
 	\item ReLU (Rectified Linear Unit): Führt nach einer Faltungsschicht nichtlineare Merkmale ein und setzt negative Werte auf Null, um die Komplexität des Modells zu reduzieren
 	\item Pooling Layer: Reduziert die räumlichen Dimensionen
-	\item Fully Connected Layer: Verbindet jedes Neuron mit allen Neuronen der vorhergehenden Schicht; führt Klassifikation basierend auf extrahierten Merkmalen durch
+	\item Fully Connected Layer: Verbindet jedes Neuron mit allen Neuronen der vorhergehenden Schicht und führt damit eiene Klassifikation basierend auf extrahierten Merkmalen durch
 \end{itemize}
 
 CNNs haben sich als äußerst leistungsfähig für Aufgaben wie Objekterkennung, Gesichtserkennung und autonomes Fahren erwiesen \parencite{RebalaGopinath2019AItM}. Ihre Fähigkeit, hierarchische Merkmale aus Bilddaten zu extrahieren, macht sie zu einem zentralen Werkzeug in vielen Bereichen der künstlichen Intelligenz.
@@ -225,7 +216,6 @@ Wichtige Aspekte dieses Trainingsprozesses sind \parencite{DevlinJacob2019BPoD}:
 \label{subsec:llms}
 
 \glspl{LLM} stellen eine bedeutende Weiterentwicklung in der Verarbeitung natürlicher Sprache dar. Diese Transformer-basierten Modelle zeichnen sich durch eine enorme Anzahl von Parametern aus und werden auf sehr großen Textkorpora trainiert \parencite{VaswaniAshish2023AIAY}.
-
 Bemerkenswerte Fähigkeiten von \glspl{LLM} sind:
 
 \begin{itemize}
@@ -307,7 +297,7 @@ Diese Metriken ermöglichen eine umfassende Bewertung der Leistung eines Klassif
 \subsection{Transfer Learning}
 \label{subsec:transfer-learning}
 
-\textcite{PanSinnoJialin2010ASoT} bezeichnen Transfer Learning als die Übertragung des nützlichen Wissens eines Modells in Bezug auf ein Kernszenario auf ein Zielszenario. Dies ist besonders nützlich, wenn für das Zielszenario wenig gelabelte Daten verfügbar sind, da dadurch der Lernprozess stark verbessert werden kann.
+\textcite{PanSinnoJialin2010ASoT} bezeichnen Transfer Learning als die Übertragung des nützlichen Wissens eines Modells in Bezug auf ein Kernszenario auf ein Zielszenario. Dies ist besonders nützlich, wenn für das Zielszenario wenig beschriftete Daten verfügbar sind, da dadurch der Lernprozess stark verbessert werden kann.
 
 Laut \textcite{BrownTomB2020LMaF} kann beispielsweise ein \gls{LLM}, das auf einer vielfältigen Datenmenge vortrainiert wurde, Wissen auf neue Aufgaben übertragen, ohne dass spezifisches Fine-Tuning erforderlich ist. Diese Fähigkeit ermöglicht es, Modelle effizient für verschiedene Anwendungen einzusetzen, selbst wenn nur begrenzte domänenspezifische Daten zur Verfügung stehen.
 
